@@ -1,106 +1,133 @@
 @extends('layouts.master')
 
 @section('content')
-<header class="mb-3">
-    <a href="#" class="burger-btn d-block d-xl-none">
-        <i class="bi bi-justify fs-3"></i>
-    </a>
-</header>
 
-<div class="page-heading">
-    <h3>Profile Statistics</h3>
-</div>
-<div class="page-content">
-    <section class="row">
-        <div class="col-12 col-lg-9">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Profile Views</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
+
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="#">Annex</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Dashboard</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+
+        <div class="row">
+            <!-- Column -->
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-webcam"></i>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                            <div class="col-6 align-self-center text-center">
+                                <div class="m-l-10">
+                                    <h5 class="mt-0 round-inner">$18090</h5>
+                                    <p class="mb-0 text-muted">Visits Today</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon green">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon red">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
-                                </div>
+                            <div class="col-3 align-self-end align-self-center">
+                                <h6 class="m-0 float-right text-center text-danger"> <i class="mdi mdi-arrow-down"></i>
+                                    <span>5.26%</span></h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-        <div class="col-12 col-lg-3">
-            <div class="card">
-                <div class="card-body py-4 px-5">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xl">
-                            <img src="assets/images/faces/1.jpg" alt="Face 1">
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">John Duck</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-account-multiple-plus"></i>
+                                </div>
+                            </div>
+                            <div class="col-6 text-center align-self-center">
+                                <div class="m-l-10 ">
+                                    <h5 class="mt-0 round-inner">562</h5>
+                                    <p class="mb-0 text-muted">New Users</p>
+                                </div>
+                            </div>
+                            <div class="col-3 align-self-end align-self-center">
+                                <h6 class="m-0 float-right text-center text-success"> <i class="mdi mdi-arrow-up"></i>
+                                    <span>8.68%</span></h6>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round ">
+                                    <i class="mdi mdi-basket"></i>
+                                </div>
+                            </div>
+                            <div class="col-6 align-self-center text-center">
+                                <div class="m-l-10 ">
+                                    <h5 class="mt-0 round-inner">7514</h5>
+                                    <p class="mb-0 text-muted">New Orders</p>
+                                </div>
+                            </div>
+                            <div class="col-3 align-self-end align-self-center">
+                                <h6 class="m-0 float-right text-center text-danger"> <i class="mdi mdi-arrow-down"></i>
+                                    <span>2.35%</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-rocket"></i>
+                                </div>
+                            </div>
+                            <div class="col-6 align-self-center text-center">
+                                <div class="m-l-10">
+                                    <h5 class="mt-0 round-inner">$32874</h5>
+                                    <p class="mb-0 text-muted">Total Sales</p>
+                                </div>
+                            </div>
+                            <div class="col-3 align-self-end align-self-center">
+                                <h6 class="m-0 float-right text-center text-success"> <i class="mdi mdi-arrow-up"></i>
+                                    <span>2.35%</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
         </div>
-    </section>
-</div>
+
+    </div><!-- container -->
+
+
+</div> <!-- Page content Wrapper -->
 @stop

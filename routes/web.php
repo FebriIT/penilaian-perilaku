@@ -15,11 +15,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
 Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
