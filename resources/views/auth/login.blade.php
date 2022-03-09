@@ -36,7 +36,7 @@
                             @csrf
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control" name="email" type="text" required="" placeholder="Username">
+                                    <input class="form-control" name="username" type="text" required="" placeholder="Username">
                                 </div>
                             </div>
 

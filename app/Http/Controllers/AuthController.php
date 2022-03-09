@@ -14,15 +14,15 @@ class AuthController extends Controller
     public function proses_login(Request $request)
     {
         if($request->remember===null){
-            setcookie('email',$request->email,100);
+            setcookie('username',$request->username,100);
             setcookie('password',$request->password,100);
         }else{
-            setcookie('email',$request->email,time()+60*60*24*100);
+            setcookie('username',$request->email,time()+60*60*24*100);
             setcookie('password',$request->password,time()+60*60*24*100);
         }
         // dd($request->all());
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             if (auth()->user()->role == 'admin') {
                 // dd(auth()->user()->role);
                 return redirect(route('dashboard.admin'));

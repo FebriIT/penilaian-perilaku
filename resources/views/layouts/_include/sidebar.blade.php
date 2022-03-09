@@ -23,8 +23,8 @@
                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span>
                         Satya Lancana </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">Data Usulan</a></li>
-                    <li><a href="#">Input Usulan</a></li>
+                    <li><a href="/{{auth()->user()->role}}/satyalancana">Data Usulan</a></li>
+                    <li><a href="/{{auth()->user()->role}}/inputsatyalanca">Input Usulan</a></li>
                 </ul>
             </li>
 
