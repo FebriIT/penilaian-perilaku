@@ -34,16 +34,13 @@
                                     <i class="mdi mdi-webcam"></i>
                                 </div>
                             </div>
-                            <div class="col-6 align-self-center text-center">
+                            <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">$18090</h5>
-                                    <p class="mb-0 text-muted">Visits Today</p>
+                                    <h5 class="mt-0 round-inner">10</h5>
+                                    <p class="mb-0 text-muted">Sudah Terverifikasi</p>
                                 </div>
                             </div>
-                            <div class="col-3 align-self-end align-self-center">
-                                <h6 class="m-0 float-right text-center text-danger"> <i class="mdi mdi-arrow-down"></i>
-                                    <span>5.26%</span></h6>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -59,16 +56,13 @@
                                     <i class="mdi mdi-account-multiple-plus"></i>
                                 </div>
                             </div>
-                            <div class="col-6 text-center align-self-center">
+                            <div class="col-9 text-center align-self-center">
                                 <div class="m-l-10 ">
-                                    <h5 class="mt-0 round-inner">562</h5>
-                                    <p class="mb-0 text-muted">New Users</p>
+                                    <h5 class="mt-0 round-inner">15</h5>
+                                    <p class="mb-0 text-muted">Belum Diverifikasi</p>
                                 </div>
                             </div>
-                            <div class="col-3 align-self-end align-self-center">
-                                <h6 class="m-0 float-right text-center text-success"> <i class="mdi mdi-arrow-up"></i>
-                                    <span>8.68%</span></h6>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -84,15 +78,11 @@
                                     <i class="mdi mdi-basket"></i>
                                 </div>
                             </div>
-                            <div class="col-6 align-self-center text-center">
+                            <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10 ">
-                                    <h5 class="mt-0 round-inner">7514</h5>
-                                    <p class="mb-0 text-muted">New Orders</p>
+                                    <h5 class="mt-0 round-inner">10</h5>
+                                    <p class="mb-0 text-muted">Sedang Diproses</p>
                                 </div>
-                            </div>
-                            <div class="col-3 align-self-end align-self-center">
-                                <h6 class="m-0 float-right text-center text-danger"> <i class="mdi mdi-arrow-down"></i>
-                                    <span>2.35%</span></h6>
                             </div>
                         </div>
                     </div>
@@ -109,15 +99,11 @@
                                     <i class="mdi mdi-rocket"></i>
                                 </div>
                             </div>
-                            <div class="col-6 align-self-center text-center">
+                            <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">$32874</h5>
-                                    <p class="mb-0 text-muted">Total Sales</p>
+                                    <h5 class="mt-0 round-inner">500</h5>
+                                    <p class="mb-0 text-muted">Total Data Usulan</p>
                                 </div>
-                            </div>
-                            <div class="col-3 align-self-end align-self-center">
-                                <h6 class="m-0 float-right text-center text-success"> <i class="mdi mdi-arrow-up"></i>
-                                    <span>2.35%</span></h6>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SatyaLancanaController;
+use App\Http\Controllers\OpdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,11 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/satyalancana', [SatyaLancanaController::class, 'index']);
+    Route::get('/inputsatyalancana', [SatyaLancanaController::class, 'input']);
+    Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
+
+    Route::get('/opd',[OpdController::class,'index']);
+    Route::post('/opd/post',[OpdController::class,'post']);
+    Route::get('/opd/{id}/destroy',[OpdController::class,'destroy']);
+
 });

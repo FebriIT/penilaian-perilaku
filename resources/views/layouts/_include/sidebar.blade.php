@@ -24,8 +24,14 @@
                         Satya Lancana </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="/{{auth()->user()->role}}/satyalancana">Data Usulan</a></li>
-                    <li><a href="/{{auth()->user()->role}}/inputsatyalanca">Input Usulan</a></li>
+                    <li><a href="/{{auth()->user()->role}}/inputsatyalancana">Input Usulan</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
+                    <i class="mdi mdi-airplay"></i>
+                    <span> OPD </span>
+                </a>
             </li>
 
 

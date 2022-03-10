@@ -16,6 +16,7 @@
 
     <link href="{{ asset('template/assets/plugins/morris/morris.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('template/assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css">
 
     <!-- DataTables -->
     <link href="{{asset('template/assets/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -23,9 +24,19 @@
     <!-- Responsive datatable examples -->
     <link href="{{asset('template/assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
+      <!-- Alertify css -->
+    <link href="{{ asset('template/assets/plugins/alertify/css/alertify.css') }}" rel="stylesheet" type="text/css">
+
     <link href="{{ asset('template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+
+
+
+
+    @yield('css')
+
+
 
 </head>
 
@@ -62,10 +73,11 @@
                 <!-- Top Bar End -->
                 @yield('content')
 
+
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2022 Febri.
+                © 2022 IT PKAP-BKPSDMD KOTA JAMBI.
             </footer>
 
         </div>
@@ -108,11 +120,21 @@
     <!-- Datatable init js -->
     <script src="{{asset('template/assets/pages/datatables.init.js')}}"></script>
 
+    <!-- Alertify js -->
+    <script src="{{ asset('template/assets/plugins/alertify/js/alertify.js') }}"></script>
+    <script src="{{ asset('template/assets/pages/alertify-init.js') }}"></script>
+
     <!-- App js -->
     <script src="{{ asset('template/assets/js/app.js') }}"></script>
 
     @yield('javascript')
 
+    <script>
+        @if (Session::has('pesan'))
+
+        alertify.success("{{ Session::get('pesan') }}");
+        @endif
+    </script>
 
 
 </body>
