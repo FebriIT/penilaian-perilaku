@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SatyaLancana;
 use App\Models\Opd;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 
 class SatyaLancanaController extends Controller
@@ -60,6 +62,23 @@ class SatyaLancanaController extends Controller
         }else{
             return back()->with('pesan','Data Gagal Disimpan');
         }
+
+    }
+
+    public function hapus($id)
+    {
+        $satya = SatyaLancana::find($id);
+        $opd=Opd::find($satya->opd_id)->namaopd;
+        $namainput=User::find($satya->user_input)->username;
+
+        $image_path = '/public/filesatya/' . $opd . '/' . $namainput . '/' . $satya->filesatya;
+        // dd(Storage::exists($image_path));
+        if (Storage::exists($image_path)) {
+
+            Storage::delete($image_path);
+        }
+        $satya->delete();
+        return back()->with('pesan','Data Berhasil Dihapus');
 
     }
 

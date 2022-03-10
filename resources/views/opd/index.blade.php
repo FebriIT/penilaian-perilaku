@@ -31,10 +31,7 @@
                         <h4 class="mt-0 header-title">Organisasi Perangkat Daerah <button type="button" class="btn btn-primary mb-2 btn-animation  float-right btn-sm" data-animation="rollIn" data-toggle="modal" data-target="#exampleModalLong-1">
                             Tambah Data
                         </button></h4>
-                        <div class="col-xs-6 col-sm-3 m-b-30">
-                            <p class="text-muted">Success Log</p>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="alertify-success">Click me</button>
-                        </div>
+
 
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">

@@ -78,7 +78,7 @@
                                                         <a href="#" class="tabledit-edit-button btn btn-sm btn-warning" id="alertify-success" style="float: none; margin: 5px;">
                                                             <span class="ti-pencil"></span>
                                                         </a>
-                                                        <a href="#" class="tabledit-delete-button btn btn-sm btn-danger" style="float: none; margin: 5px;">
+                                                        <a href="/{{ auth()->user()->role }}/satyalancana/{{ $row->id }}/hapus" class="tabledit-delete-button btn btn-sm btn-danger" style="float: none; margin: 5px;">
                                                             <span class="ti-trash"></span>
                                                         </a>
                                                     </div>

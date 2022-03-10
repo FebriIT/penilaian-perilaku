@@ -32,6 +32,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/satyalancana', [SatyaLancanaController::class, 'index']);
     Route::get('/inputsatyalancana', [SatyaLancanaController::class, 'input']);
     Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
+    Route::get('/satyalancana/{id}/hapus',[SatyaLancanaController::class,'hapus']);
 
     Route::get('/opd',[OpdController::class,'index']);
     Route::post('/opd/post',[OpdController::class,'post']);
