@@ -11,6 +11,7 @@
     <meta content="Admin Dashboard" name="description" />
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
 
@@ -30,6 +31,7 @@
     <link href="{{ asset('template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+
 
 
 
@@ -134,6 +136,7 @@
 
         alertify.success("{{ Session::get('pesan') }}");
         @endif
+
     </script>
 
 

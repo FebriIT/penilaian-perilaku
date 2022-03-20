@@ -34,8 +34,8 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
     Route::get('/satyalancana/{id}/hapus',[SatyaLancanaController::class,'hapus']);
 
-    Route::get('/opd',[OpdController::class,'index']);
-    Route::post('/opd/post',[OpdController::class,'post']);
-    Route::get('/opd/{id}/destroy',[OpdController::class,'destroy']);
+
+    Route::resource('opd', OpdController::class)->except(['show','update']);
+    // Route::
 
 });

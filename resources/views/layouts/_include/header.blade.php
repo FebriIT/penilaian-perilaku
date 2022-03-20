@@ -3,7 +3,7 @@
     <nav class="navbar-custom">
 
 
-        <ul class="list-inline float-right mb-0">
+        {{-- <ul class="list-inline float-right mb-0">
             <!-- language-->
 
             <li class="list-inline-item dropdown notification-list">
@@ -112,7 +112,7 @@
                 </div>
             </li>
 
-        </ul>
+        </ul> --}}
         <ul class="list-inline menu-left mb-0">
             <li class="float-left">
                 <button class="button-menu-mobile open-left waves-light waves-effect">

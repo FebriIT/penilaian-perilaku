@@ -23,6 +23,12 @@ class SatyaLancanaController extends Controller
     }
     public function post(Request $request)
     {
+        $validated = $request->validate([
+            'nip' => 'required|unique:satyalancana,nip|max:13',
+            'nama' => 'required',
+            'pangkat' => 'required',
+            'jabatan' => 'required',
+        ]);
         $data=new SatyaLancana;
         $data->nip=$request->nip;
         $data->nama=$request->nama;
