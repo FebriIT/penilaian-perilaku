@@ -1,8 +1,8 @@
 <!-- LOGO -->
 <div class="topbar-left">
     <div class="text-center">
-        <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
-        <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
+        {{-- <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a> --}}
+        <a href="/" class="logo"><img src="{{ asset('img/logopemkot.png') }}" height="80" alt="logo"></a>
     </div>
 </div>
 

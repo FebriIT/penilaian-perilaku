@@ -33,6 +33,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/inputsatyalancana', [SatyaLancanaController::class, 'input']);
     Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
     Route::get('/satyalancana/{id}/hapus',[SatyaLancanaController::class,'hapus']);
+    Route::get('/satyalancana/download/{id}', [SatyaLancanaController::class,'getDownload']);
 
 
     Route::resource('opd', OpdController::class)->except(['show','update']);

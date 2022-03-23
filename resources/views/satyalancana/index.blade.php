@@ -39,10 +39,11 @@
                                             <th>Jabatan</th>
                                             <th>Masa Kerja</th>
                                             <th>SKLS</th>
+                                            <th>OPD</th>
                                             <th>Status Verifikasi</th>
                                             <th>Keterangan</th>
-                                            <th>User Input</th>
-                                            <th>User Edit</th>
+                                            {{-- <th>User Input</th>
+                                            <th>User Edit</th> --}}
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -56,6 +57,7 @@
                                             <td>{{ $row->jabatan }}</td>
                                             <td>{{ $row->masakerja }} Thn</td>
                                             <td>{{$row->skls}}</td>
+                                            <td>{{ $row->opd->namaopd }}</td>
                                             @if ($row->status_verifikasi==1)
                                                 <td style="background: blue;color:white;"><b>Sedang Di Proses</b></td>
                                             @elseif ($row->status_verifikasi==2)
@@ -65,20 +67,23 @@
 
                                             @endif
                                             <td>{{ $row->keterangan }}</td>
-                                            @php
+                                            {{-- @php
                                                 $user_input=\App\Models\User::find($row->user_input)->name;
                                                 $user_edit=\App\Models\User::find($row->user_edit)->name;
 
                                             @endphp
                                             <td>{{ $user_input }} {{ $row->created_at }}</td>
-                                            <td>{{ $user_edit }} {{ $row->updated_at }}</td>
+                                            <td>{{ $user_edit }} {{ $row->updated_at }}</td> --}}
                                             <td style="white-space: nowrap; width: 15%;">
                                                 <div class="tabledit-toolbar btn-toolbar" style="text-align: center;">
                                                     <div class="btn-group btn-group-sm" style="float: none;">
+                                                        <a href="/{{ auth()->user()->role }}/satyalancana/download/{{ $row->id }}" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;">
+                                                            <span class="ti-download"></span>
+                                                        </a>
                                                         <a href="#" class="tabledit-edit-button btn btn-sm btn-warning" id="alertify-success" style="float: none; margin: 5px;">
                                                             <span class="ti-pencil"></span>
                                                         </a>
-                                                        <a href="/{{ auth()->user()->role }}/satyalancana/{{ $row->id }}/hapus" class="tabledit-delete-button btn btn-sm btn-danger" style="float: none; margin: 5px;">
+                                                        <a href="/{{ auth()->user()->role }}/satyalancana/{{ $row->id }}/hapus" onclick="return confirm('Are you sure?')" class="tabledit-delete-button btn btn-sm btn-danger" style="float: none; margin: 5px;">
                                                             <span class="ti-trash"></span>
                                                         </a>
                                                     </div>

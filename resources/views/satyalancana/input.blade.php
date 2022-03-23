@@ -49,19 +49,21 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">NIP</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" placeholder="199906042002124004" name="nip" id="example-text-input">
+                                    <input class="form-control" type="text" placeholder="199906042002124004" name="nip" id="nip">
+                                    <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul>
+                                    {{-- <p id="nip-error" class="error"></p> --}}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="nama" placeholder="Febri Mubarok, S.Kom" id="example-text-input">
+                                    <input class="form-control" type="text" name="nama" placeholder="Febri Mubarok, S.Kom" id="nama">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Pangkat</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="pangkat">
+                                    <select class="form-control" name="pangkat" id="pangkat">
                                         <option>-pilih-</option>
                                         <option value="Juru Muda (I/A)">Juru Muda (I/A)</option>
                                         <option value="Juru Muda TK.I (I/B)">Juru Muda TK.I (I/B)</option>
@@ -86,7 +88,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">OPD</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="opd_id">
+                                    <select class="form-control" name="opd_id" id="opd_id">
                                         <option>-pilih-</option>
                                         @foreach ($opd as $row1)
                                         <option value="{{ $row1->id }}">{{ $row1->namaopd }}</option>
@@ -97,13 +99,13 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Jabatan</label>
                                 <div class="col-sm-10">
-                                    <textarea id="textarea" name="jabatan" class="form-control" maxlength="225" rows="3" placeholder="Kasi Perlindungan Khusus Anak Dinas Pemberdayaan Masyarakat, Perempuan dan Perlindungan Anak Kota Jambi"></textarea>
+                                    <textarea id="textarea" name="jabatan" id="jabatan" class="form-control" maxlength="225" rows="3" placeholder="Kasi Perlindungan Khusus Anak Dinas Pemberdayaan Masyarakat, Perempuan dan Perlindungan Anak Kota Jambi"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Masa Kerja</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" name="masakerja" placeholder="25" id="example-text-input">
+                                    <input class="form-control" type="number" name="masakerja" placeholder="25" id="masakerja">
                                     <small class="form-text text-muted" style="color: red;font-style:italic;">note : format .. Tahun</small>
                                 </div>
                             </div>
@@ -136,38 +138,39 @@
         <script src="{{asset('template/assets/plugins/dropify/js/dropify.min.js')}}"></script>
         <script>
             $(function () {
-                $("#pendaftaran").submit(function (event) {
-                    var fname = $("#firstname").val();
-                    var lname = $("#lastname").val();
-                    var mail = $("#mail").val();
-                    var phone = $("#phone").val();
-                    var pass = $("#password").val();
-                    var confir_pass = $("#confpassword").val();
-                    var select = $("#security").val();
-                    var answer = $("#answer").val();
-                    var setuju = $("#setuju").is(":checked");
+                $("#pendaftaran1").submit(function (event) {
+                    var nip = $("#nip").val();
+                    var nama = $("#nama").val();
+                    var opd_id = $("#opd_id").val();
+                    var pangkat = $("#pangkat").val();
+                    var jabatan = $("#jabatan").val();
+                    var masakerja = $("#masakerja").val();
+                    var filesatya = $("#input-file-now").val();
 
-                    val_name(fname, event, "#firstname-error");
-                    val_name(lname, event, "#lastname-error");
-                    val_mail(mail, event, "#mail-error");
-                    val_phone(phone, event, "#phone-error");
-                    val_password(pass, event, "#password-error");
-                    val_password(confir_pass, event, "#confpassword-error");
-                    val_konfirmasi(pass, confir_pass, event, "#confpassword-error");
-                    val_select(select, event, "#security-error");
-                    val_answer(answer, event, "#answer-error");
-                    val_check(setuju, event, "#setuju-error");
+                    val_nip(nip, event, "#nip-error");
+                    val_nama(nama, event, "#nama-error");
+                    val_opd(opd_id, event, "#opd_id-error");
+                    val_pangkat(pangkat, event, "#pangkat-error");
+                    val_jabatan(jabatan, event, "#jabatan-error");
+                    val_masakerja(masakerja, event, "#masakerja-error");
+                    val_filesatya(filesatya, event, "#filesatya-error");
                 });
 
-                function val_name(name, event, error) {
-                    if (!cekAngka(name)) {
-                    $(error).text("Nama tidak boleh kosong dan tidak boleh angka");
+                function val_nip(nip, event, error) {
+                    if (!cekNip(nip)) {
+                        $(error).text("NIP tidak boleh kosong");
                     // preventDefault untuk mentiadakan event submit supaya tidak berjalan
                     event.preventDefault();
                     } else {
-                    $(error).text("");
+                        alert(nip);
+                        $(error).text("");
                     }
                 }
+                function cekNip(nip) {
+                    var cek = /^[0-9]{1,13}$/;
+                    return cek.test(nip);
+                }
+
 
                 function val_mail(mail, event, error) {
                     if (!cekMail(mail)) {
@@ -219,10 +222,10 @@
 
                 function val_answer(answer, event, error) {
                     if (answer == "") {
-                    $(error).text("Answer tidak boleh kosong");
+                        $(error).text("Answer tidak boleh kosong");
                     event.preventDefault();
                     } else {
-                    $(error).text("");
+                        $(error).text("");
                     }
                 }
 

@@ -30,7 +30,7 @@ class AuthController extends Controller
                 return redirect(route('user.jasa'));
             }
         } else {
-            return redirect('login')->with('error','');
+            return redirect('/')->with('error','');
         }
 
         return redirect()->back();

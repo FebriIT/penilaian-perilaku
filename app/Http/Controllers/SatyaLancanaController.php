@@ -59,8 +59,8 @@ class SatyaLancanaController extends Controller
         if ($request->has('filesatya')) {
             $datafile=$request->file('filesatya');
             // dd($datafile);
-            $filename = $request->nama.'-'.$datafile->getClientOriginalName() . '-' . time() . '.' . $datafile->extension();
-            $datafile->move(public_path() . '/storage/filesatya/'.$namaopd.'/'. auth()->user()->username, $filename);
+            $filename = $request->nama.'-'.$request->nip.'-'.$datafile->getClientOriginalName() . '-' . time() . '.' . $datafile->extension();
+            $datafile->move(public_path() . '/storage/filesatya/04-2022/'.$namaopd.'/'. auth()->user()->username, $filename);
             // $data=$filename;
             $data->filesatya=$filename;
             $data->save();
@@ -77,7 +77,7 @@ class SatyaLancanaController extends Controller
         $opd=Opd::find($satya->opd_id)->namaopd;
         $namainput=User::find($satya->user_input)->username;
 
-        $image_path = '/public/filesatya/' . $opd . '/' . $namainput . '/' . $satya->filesatya;
+        $image_path = '/public/filesatya/04-2022/' . $opd . '/' . $namainput . '/' . $satya->filesatya;
         // dd(Storage::exists($image_path));
         if (Storage::exists($image_path)) {
 
@@ -86,6 +86,17 @@ class SatyaLancanaController extends Controller
         $satya->delete();
         return back()->with('pesan','Data Berhasil Dihapus');
 
+    }
+
+    public function getDownload($id)
+    {
+        $satya=SatyaLancana::find($id);
+        $opd=Opd::find($satya->opd_id)->namaopd;
+        $namainput=User::find($satya->user_input)->name;
+
+        $file_path = public_path().'/storage/filesatya/04-2022/' . $opd . '/' . $namainput . '/' . $satya->filesatya;
+        // dd(file_exists(public_path().$file_path));
+        return  response()->download($file_path);
     }
 
 }
