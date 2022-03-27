@@ -376,7 +376,7 @@
                                 .dataTable(); //inialisasi datatable
                             oTable.fnDraw(false); //reset datatable
                             if(data=='berhasil'){
-                                alertify.success(data);
+                                alertify.success('Data Berhasil Dibuat');
 
                             }else if(data=='gagal'){
 
