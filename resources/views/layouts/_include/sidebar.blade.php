@@ -14,7 +14,7 @@
 
             <li>
                 <a href="/{{ auth()->user()->role }}/dashboard" class="waves-effect">
-                    <i class="mdi mdi-airplay"></i>
+                    <i class="mdi mdi-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
@@ -29,19 +29,19 @@
             </li> --}}
             <li>
                 <a href="/{{auth()->user()->role}}/satyalancana" class="waves-effect">
-                    <i class="mdi mdi-airplay"></i>
+                    <i class="mdi mdi-folder-multiple-outline"></i>
                     <span> Satya Lancana </span>
                 </a>
             </li>
             <li>
                 <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
-                    <i class="mdi mdi-airplay"></i>
+                    <i class="mdi mdi-domain"></i>
                     <span> OPD </span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('logout') }}" class="waves-effect">
-                    <i class="mdi mdi-airplay"></i>
+                    <i class="mdi mdi-logout"></i>
                     <span> Logout </span>
                 </a>
             </li>

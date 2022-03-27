@@ -3,6 +3,7 @@
 <!-- Dropzone css -->
 <link href="{{asset('template/assets/plugins/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('template/assets/plugins/dropify/css/dropify.min.css')}}" rel="stylesheet">
+<link href="{{ asset('template/assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -34,7 +35,7 @@
                     <div class="card-body">
 
                         <h4 class="mt-0 header-title">Data Usulan Satya Lancana
-                            <button type="button" class="btn btn-primary mb-2 btn-animation  float-right btn-sm"
+                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm"
                                 id="tombol-tambah">
                                 Tambah Data
                             </button>
@@ -125,7 +126,7 @@
 <!-- Modal -->
 <div class="modal fade" id="tambah-edit-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content ">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-judul"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -147,8 +148,8 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">NIP</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" placeholder="199906042002124004" name="nip" id="nip" required>
-                                    <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul>
+                                    <input class="form-control" type="text"  data-parsley-type="number" placeholder="199906042002124004" data-parsley-maxlength="18" data-parsley-minlength="6"  name="nip" id="nip" required>
+                                    {{-- <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul> --}}
                                     {{-- <p id="nip-error" class="error"></p> --}}
                                 </div>
                             </div>
@@ -161,32 +162,32 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Pangkat</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="pangkat" id="pangkat" required>
+                                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="pangkat" id="pangkat" required>
                                         <option>-pilih-</option>
-                                        <option value="Juru Muda (I/A)">Juru Muda (I/A)</option>
-                                        <option value="Juru Muda TK.I (I/B)">Juru Muda TK.I (I/B)</option>
-                                        <option value="Juru  (I/C)">Juru  (I/C)</option>
-                                        <option value="Juru TK.I (I/D)">Juru TK.I (I/D)</option>
-                                        <option value="Pengatur Muda (II/A)">Pengatur Muda (II/A)</option>
-                                        <option value="Pengatur Muda TK.I (II/B)">Pengatur Muda TK.I (II/B)</option>
-                                        <option value="Pengatur (II/C)">Pengatur (II/C)</option>
-                                        <option value="Pengatur TK.I (II/D)">Pengatur TK.I (II/D)</option>
-                                        <option value="Penata Muda (III/A)">Penata Muda (III/A)</option>
-                                        <option value="Penata Muda TK.I (III/B)">Penata Muda TK.I (III/B)</option>
-                                        <option value="Penata (III/C)">Penata (III/C)</option>
-                                        <option value="Penata TK.I (III/D)">Penata TK.I (III/D)</option>
-                                        <option value="Pembina (IV/A)">Pembina (IV/A)</option>
-                                        <option value="Pembina TK.I (IV/B)">Pembina TK.I (IV/B)</option>
-                                        <option value="Pembina Muda (IV/C)">Pembina Muda (IV/C)</option>
-                                        <option value="Pembina Madya (IV/D)">Pembina Madya (IV/D)</option>
-                                        <option value="Pembina Utama (IV/E)">Pembina Utama (IV/E)</option>
+                                        <option value="Juru Muda (I/A)">Juru Muda &nbsp; - &nbsp; (I/A)</option>
+                                        <option value="Juru Muda TK.I (I/B)">Juru Muda TK.I &nbsp; - &nbsp; (I/B)</option>
+                                        <option value="Juru  (I/C)">Juru &nbsp; - &nbsp; (I/C)</option>
+                                        <option value="Juru TK.I (I/D)">Juru TK.I &nbsp; - &nbsp;  (I/D)</option>
+                                        <option value="Pengatur Muda (II/A)">Pengatur Muda &nbsp; - &nbsp; (II/A)</option>
+                                        <option value="Pengatur Muda TK.I (II/B)">Pengatur Muda TK.I &nbsp; - &nbsp; (II/B)</option>
+                                        <option value="Pengatur (II/C)">Pengatur &nbsp; - &nbsp; (II/C)</option>
+                                        <option value="Pengatur TK.I (II/D)">Pengatur TK.I &nbsp; - &nbsp; (II/D)</option>
+                                        <option value="Penata Muda (III/A)">Penata Muda &nbsp; - &nbsp; (III/A)</option>
+                                        <option value="Penata Muda TK.I (III/B)">Penata Muda TK.I &nbsp; - &nbsp; (III/B)</option>
+                                        <option value="Penata (III/C)">Penata &nbsp; - &nbsp; (III/C)</option>
+                                        <option value="Penata TK.I (III/D)">Penata TK.I &nbsp; - &nbsp; (III/D)</option>
+                                        <option value="Pembina (IV/A)">Pembina &nbsp; - &nbsp; (IV/A)</option>
+                                        <option value="Pembina TK.I (IV/B)">Pembina TK.I &nbsp; - &nbsp; (IV/B)</option>
+                                        <option value="Pembina Muda (IV/C)">Pembina Muda &nbsp; - &nbsp; (IV/C)</option>
+                                        <option value="Pembina Madya (IV/D)">Pembina Madya &nbsp; - &nbsp; (IV/D)</option>
+                                        <option value="Pembina Utama (IV/E)">Pembina Utama &nbsp; - &nbsp; (IV/E)</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">OPD</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="opd_id" id="opd_id" required>
+                                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="opd_id" id="opd_id" required>
                                         <option>-pilih-</option>
                                         @foreach ($opd as $row1)
                                         <option value="{{ $row1->id }}">{{ $row1->namaopd }}</option>
@@ -203,14 +204,18 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Masa Kerja</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" name="masakerja" placeholder="25" id="masakerja" required>
+                                    <input class="form-control" type="text" name="masakerja" placeholder="25" id="masakerja" required data-parsley-maxlength="2" data-parsley-type="number">
                                     <small class="form-text text-muted" style="color: red;font-style:italic;">note : format .. Tahun</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Upload File</label>
                                 <div class="col-sm-10">
-                                    <input type="file" id="input-file-now" name="filesatya" class="dropify" required />
+                                    <input type="file" id="input-file-now" name="filesatya" class="dropify" onchange="Filevalidation()" required />
+                                    <small class="form-text text-muted" style="color: red;font-style:italic;">note : file harus PDF dan tidak lebih dari 1000kb / 1mb</small>
+
+                                    <p id="size"></p>
+
                                 </div>
                             </div>
 
@@ -231,11 +236,51 @@
 <script src="{{ asset('js/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{asset('template/assets/plugins/dropzone/dist/dropzone.js')}}"></script>
         <script src="{{asset('template/assets/plugins/dropify/js/dropify.min.js')}}"></script>
+        <!-- Parsley js -->
+        <script type="text/javascript" src="{{ asset('template/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
+        <script src="{{ asset('template/assets/plugins/select2/select2.min.js') }}" type="text/javascript"></script>
 <script>
+    Filevalidation = () => {
+        const fi = document.getElementById('input-file-now');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 1000) {
+                    // alertify.success('Data tidak boleh lebih dari 1000kb / 1mb')
+                    document.getElementById('size').innerHTML = '<b>'
+                    + file + '</b> KB';
+
+                      $("#tombol-simpan").attr("disabled",true);
+                } else if (file < 100) {
+                    // alertify.success('Data tidak boleh kurang dari 100kb')
+                    document.getElementById('size').innerHTML = '<b>'
+                    + file + '</b> KB';
+
+
+                      $("#tombol-simpan").attr("disabled",true);
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                    + file + '</b> KB';
+                    $("#tombol-simpan").attr("disabled",false);
+                }
+            }
+        }
+    }
+
     $(document).ready(function () {
+        $("#pangkat").select2({
+           width: '100%'
+       });
+        $("#opd_id").select2({
+           width: '100%'
+       });
 
 
-
+        $('form').parsley();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -291,6 +336,9 @@
             ]
 
         });
+
+
+
         // tombol tambah data
         $('#tombol-tambah').click(function () {
             $('#id').val(''); //valuenya menjadi kosong
@@ -302,6 +350,7 @@
 
         if ($("#form-tambah-edit").length > 0) {
             $("#form-tambah-edit").validate({
+
                 submitHandler: function (form) {
                     var actionType = $('#tombol-simpan').val();
                     var simpan = $('#tombol-simpan').html('Sending..');

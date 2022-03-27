@@ -30,7 +30,7 @@
                     <div class="card-body">
 
                         <h4 class="mt-0 header-title">Organisasi Perangkat Daerah
-                            <button type="button" class="btn btn-primary mb-2 btn-animation  float-right btn-sm"
+                            <button type="button" class="btn btn-primary mb-2 btn-animation  float-right btn-sm" data-animation="jello"
                                 id="tombol-tambah">
                                 Tambah Data
                             </button></h4>
@@ -90,8 +90,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id="tambah-edit-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content  card-success">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-judul"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -104,7 +104,7 @@
 
                     <div class="form-group">
                         <label>Nama OPD</label>
-                        <input type="text" name="namaopd" id="namaopd" class="form-control">
+                        <input type="text" name="namaopd" id="namaopd" class="form-control" required>
                     </div>
 
 
@@ -122,7 +122,14 @@
 
 @section('javascript')
 <script src="{{ asset('js/jquery-validation/jquery.validate.min.js') }}"></script>
+        <!-- Parsley js -->
+        <script type="text/javascript" src="{{ asset('template/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
 <script>
+    $('.btn-animation').on('click', function(br) {
+            //adding animation
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  ' + $(this).data("animation") + '  animated');
+            });
+            $('form').parsley();
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {

@@ -156,6 +156,7 @@ class SatyaLancanaController extends Controller
     //javascript
     public function store(Request $request)
     {
+
         $id = $request->id;
         // dd($request->all());
         if($request->masakerja<10){
