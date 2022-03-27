@@ -29,13 +29,14 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
-    Route::get('/satyalancana', [SatyaLancanaController::class, 'index']);
-    Route::get('/inputsatyalancana', [SatyaLancanaController::class, 'input']);
-    Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
-    Route::get('/satyalancana/{id}/hapus',[SatyaLancanaController::class,'hapus']);
+    // Route::get('/satyalancana', [SatyaLancanaController::class, 'index'])->name('satya.index');
+    // Route::get('/inputsatyalancana', [SatyaLancanaController::class, 'input']);
+    // Route::post('/inputsatyalancana/post',[SatyaLancanaController::class,'post']);
+    // Route::get('/satyalancana/{id}/hapus',[SatyaLancanaController::class,'hapus']);
     Route::get('/satyalancana/download/{id}', [SatyaLancanaController::class,'getDownload']);
 
 
+    Route::resource('satyalancana',SatyaLancanaController::class)->except(['show','update']);
     Route::resource('opd', OpdController::class)->except(['show','update']);
     // Route::
 

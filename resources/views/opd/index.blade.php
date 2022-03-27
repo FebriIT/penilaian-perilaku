@@ -184,7 +184,7 @@
                             var oTable = $('#datatable1')
                                 .dataTable(); //inialisasi datatable
                             oTable.fnDraw(false); //reset datatable
-                            alertify.success('Data berhasil dibuat')
+                            // alertify.success('Data berhasil dibuat')
 
                         },
                         error: function (data) { //jika error tampilkan error pada console
