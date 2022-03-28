@@ -185,7 +185,8 @@
                         dataType: 'json',
                         success: function (data) { //jika berhasil
                             console.log('ok');
-                            $('#form-tambah-edit').trigger("reset"); //form reset
+                            $('#form-tambah-edit').trigger("reset"); //form
+
                             $('#tambah-edit-modal').modal('hide'); //modal hide
                             $('#tombol-simpan').html('Simpan'); //tombol simpan
                             var oTable = $('#datatable1')

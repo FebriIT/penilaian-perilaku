@@ -163,7 +163,7 @@
                                 <label class="col-sm-2 col-form-label">Pangkat</label>
                                 <div class="col-sm-10">
                                     <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="pangkat" id="pangkat" required>
-                                        <option>-pilih-</option>
+                                        <option value="">-pilih-</option>
                                         <option value="Juru Muda (I/A)">Juru Muda &nbsp; - &nbsp; (I/A)</option>
                                         <option value="Juru Muda TK.I (I/B)">Juru Muda TK.I &nbsp; - &nbsp; (I/B)</option>
                                         <option value="Juru  (I/C)">Juru &nbsp; - &nbsp; (I/C)</option>
@@ -188,7 +188,7 @@
                                 <label class="col-sm-2 col-form-label">OPD</label>
                                 <div class="col-sm-10">
                                     <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="opd_id" id="opd_id" required>
-                                        <option>-pilih-</option>
+                                        <option value="">-pilih-</option>
                                         @foreach ($opd as $row1)
                                         <option value="{{ $row1->id }}">{{ $row1->namaopd }}</option>
                                         @endforeach
@@ -250,13 +250,13 @@
                 const file = Math.round((fsize / 1024));
                 // The size of the file.
                 if (file >= 1000) {
-                    // alertify.success('Data tidak boleh lebih dari 1000kb / 1mb')
+                    alertify.error('Data tidak boleh lebih dari 1000kb / 1mb')
                     document.getElementById('size').innerHTML = '<b>'
                     + file + '</b> KB';
 
                       $("#tombol-simpan").attr("disabled",true);
                 } else if (file < 100) {
-                    // alertify.success('Data tidak boleh kurang dari 100kb')
+                    alertify.error('Data tidak boleh kurang dari 100kb')
                     document.getElementById('size').innerHTML = '<b>'
                     + file + '</b> KB';
 
@@ -370,6 +370,11 @@
                         success: function (data) { //jika berhasil
                             console.log(data);
                             $('#form-tambah-edit').trigger("reset"); //form reset
+                            $('#opd_id').val('').change();
+                            $('#pangkat').val('').change();
+                            $('#input-file-now').val('').change();
+                            document.getElementById('size').innerHTML = '<b>0</b> KB';
+
                             $('#tambah-edit-modal').modal('hide'); //modal hide
                             $('#tombol-simpan').html('Simpan'); //tombol simpan
                             var oTable = $('#datatable1')
