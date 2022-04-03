@@ -9,11 +9,13 @@
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+        <link rel="shortcut icon" href="{{ asset('img/bg.png') }}">
 
         <link href="{{ asset('template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+           <!-- Alertify css -->
+    <link href="{{ asset('template/assets/plugins/alertify/css/alertify.css') }}" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -27,30 +29,42 @@
             <div class="card">
                 <div class="card-body">
 
+
                     <h3 class="text-center mt-0 m-b-15">
-                        <a href="#" class="logo logo-admin"><img src="{{ asset('img/logopemkot.png') }}" height="100" alt="logo"></a>
+                        <a href="#" class="logo logo-admin"><img src="{{ asset('img/bg.png') }}" height="100" alt="logo"></a>
                     </h3>
 
                     <div class="p-3">
+                        @php
+                        if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
+                            $login_username=$_COOKIE['username'];
+                            $login_password=$_COOKIE['password'];
+                            $is_remember="checked='checked'";
+                        }else{
+                            $login_username='';
+                            $login_password='';
+                            $is_remember="";
+                        }
+                        @endphp
                         <form class="form-horizontal m-t-20" action="{{ route('proses_login') }}" method="POST">
                             @csrf
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control" name="username" type="text" required="" placeholder="Username">
+                                    <input class="form-control" name="username" type="text" required="" value="{{ $login_username }}" placeholder="Username">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                                    <input class="form-control" name="password" type="password" required="" value="{{ $login_password }}" placeholder="Password">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
+                                        <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ $is_remember }}>
+                                        <label class="custom-control-label" for="remember">Remember me</label>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +80,7 @@
                                     <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> <small>Forgot your password ?</small></a>
                                 </div>
                                 <div class="col-sm-5 m-t-20">
-                                    <a href="pages-register.html" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></a>
+                                    <a href="/register" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></a>
                                 </div>
                             </div>
                         </form>
@@ -90,8 +104,24 @@
         <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
         <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
 
+        <!-- Alertify js -->
+    <script src="{{ asset('template/assets/plugins/alertify/js/alertify.js') }}"></script>
+    <script src="{{ asset('template/assets/pages/alertify-init.js') }}"></script>
+
         <!-- App js -->
         <script src="{{ asset('template/assets/js/app.js') }}"></script>
+        <script>
+        @if (Session::has('berhasil'))
+
+        alertify.success("{{ Session::get('berhasil') }}");
+        @elseif(Session::has('gagal'))
+        alertify.error("{{ Session::get('gagal') }}");
+
+        @endif
+
+    </script>
+
+
 
     </body>
 </html>
