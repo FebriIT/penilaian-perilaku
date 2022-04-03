@@ -13,7 +13,7 @@ class SatyaLancanaController extends Controller
 {
     public function index(Request $request)
     {
-        $data=SatyaLancana::orderBy('id','desc')->get();
+        $data=SatyaLancana::where('user_input',auth()->user()->id)->get();
         $opd=Opd::orderBy('id','desc')->get();
         if($request->ajax()){
             return datatables()->of($data)
@@ -58,6 +58,11 @@ class SatyaLancanaController extends Controller
             ->addColumn('keterangan',function($f){
                 $keterangan=$f->keterangan;
                 return $keterangan;
+            })
+            ->addColumn('created_at',function($f){
+                $created_at=$f->created_at;
+                // dd($created_at);
+                return $created_at;
             })
 
             ->rawColumns(['action','nama','opd','status'])
