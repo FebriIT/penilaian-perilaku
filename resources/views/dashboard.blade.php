@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Column -->
             <!-- Column -->
             <div class="col-md-6 col-lg-6 col-xl-3">
@@ -103,6 +104,46 @@
                                     <p class="mb-0 text-muted">Total Data Usulan</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-account"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 align-self-center text-center">
+                                <div class="m-l-10">
+                                    <h5 class="mt-0 round-inner">{{ $dataadmin }}</h5>
+                                    <p class="mb-0 text-muted">Admin</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <div class="col-3 align-self-center">
+                                <div class="round">
+                                    <i class="mdi mdi-account"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 align-self-center text-center">
+                                <div class="m-l-10">
+                                    <h5 class="mt-0 round-inner">{{ $datauser }}</h5>
+                                    <p class="mb-0 text-muted">User</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
