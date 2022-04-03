@@ -1,77 +1,120 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>Register - PKAP BKPSDMD Kota Jambi</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Mannatthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <link rel="shortcut icon" href="{{ asset('img/bg.png') }}">
+
+        <link href="{{ asset('template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $key=>$error)
+                            <li>{{ ++$key }}. {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                    <h3 class="text-center mt-0 m-b-15">
+                        <a href="/" class="logo logo-admin"><img src="{{ asset('img/bg.png') }}" height="100" alt="logo"></a>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    </h3>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <div class="p-3">
+                        <form class="form-horizontal" action="{{ route('proses_register') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="email" type="email" required="" placeholder="Email">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="name" type="text" required="" placeholder="name">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="username" type="text" required="" placeholder="Username">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="password-confirm" type="password" required="" placeholder="Password Confirmation">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label font-weight-normal" for="customCheck1">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center row m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-danger btn-block waves-effect waves-light" type="submit">Register</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group m-t-10 mb-0 row">
+                                <div class="col-12 m-t-20 text-center">
+                                    <a href="/" class="text-muted">Already have account?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+
+
+
+        <!-- jQuery  -->
+        <script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('template/assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('template/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('template/assets/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('template/assets/js/detect.js') }}"></script>
+        <script src="{{ asset('template/assets/js/fastclick.js') }}"></script>
+        <script src="{{ asset('template/assets/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('template/assets/js/jquery.blockUI.js') }}"></script>
+        <script src="{{ asset('template/assets/js/waves.js') }}"></script>
+        <script src="{{ asset('template/assets/js/jquery.nicescroll.js') }}"></script>
+        <script src="{{ asset('template/assets/js/jquery.scrollTo.min.js') }}"></script>
+
+        <!-- App js -->
+        <script src="{{ asset('template/assets/js/app.js') }}"></script>
+
+    </body>
+</html>

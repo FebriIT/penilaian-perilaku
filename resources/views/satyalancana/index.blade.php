@@ -54,8 +54,7 @@
                                             <th>OPD</th>
                                             <th>Status Verifikasi</th>
                                             <th>Keterangan</th>
-                                            {{-- <th>User Input</th>
-                                            <th>User Edit</th> --}}
+                                            <th>Created At</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -287,10 +286,10 @@
             }
         });
 
-        $('#datatable1').DataTable({
+        var table=$('#datatable1').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('satyalancana.index') }}",
+            ajax: "{{ url('/'.auth()->user()->role.'/satyalancana') }}",
             columns: [{
                     data: null,
                     sortable: false,
@@ -327,15 +326,20 @@
                     name:'keterangan'
                 },
                 {
+                    data:'created_at',
+                    name:'created_at'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },
             ],
             order: [
-                [1, "asc"]
+                [8, "desc"]
             ]
 
         });
+
 
 
 
@@ -361,7 +365,7 @@
                     $.ajax({
                         type: "POST",
                         enctype: "multipart/form-data",
-                        url: "{{ route('satyalancana.store') }}",
+                        url: "{{ url('/'.auth()->user()->role.'/satyalancana') }}",
                         data: data,
                         processData: false,
                         contentType: false,
@@ -404,7 +408,7 @@
             alertify.confirm('Data SatyaLancana ini akan dihapus, Apa anda yakin ?', function () {
                 $.ajax({
 
-                    url: "satyalancana/" + dataid, //eksekusi ajax ke url ini
+                    url: "/{{ auth()->user()->role }}/satyalancana/" + dataid, //eksekusi ajax ke url ini
                     type: 'delete',
                     success: function (data) { //jika sukses
                         setTimeout(function () {

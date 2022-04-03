@@ -2,7 +2,7 @@
 <div class="topbar-left">
     <div class="text-center">
         {{-- <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a> --}}
-        <a href="/" class="logo"><img src="{{ asset('img/logopemkot.png') }}" height="80" alt="logo"></a>
+        <a href="/" class="logo"><img src="{{ asset('img/bg.png') }}" height="80" alt="logo"></a>
     </div>
 </div>
 
@@ -33,12 +33,15 @@
                     <span> Satya Lancana </span>
                 </a>
             </li>
+            @if (auth()->user()->role=='admin')
+
             <li>
                 <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
                     <span> OPD </span>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="{{ route('logout') }}" class="waves-effect">
                     <i class="mdi mdi-logout"></i>

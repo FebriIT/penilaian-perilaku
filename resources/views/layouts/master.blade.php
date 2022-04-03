@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/bg.png') }}">
 
     <link href="{{ asset('template/assets/plugins/morris/morris.css') }}" rel="stylesheet">
 
