@@ -6,7 +6,7 @@
         <ul class="list-inline float-right mb-0">
             <!-- language-->
 
-            <li class="list-inline-item dropdown notification-list">
+            {{-- <li class="list-inline-item dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="ti-email noti-icon"></i>
@@ -91,12 +91,12 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
             <li class="list-inline-item dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('template/assets/images/users/avatar-1.jpg') }}" alt="user" class="rounded-circle">
+                    <img src="{{ auth()->user()->getAvatar() }}" alt="user" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
