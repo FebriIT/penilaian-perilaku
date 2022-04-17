@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Http;
+
 class AuthController extends Controller
 {
     public function login()
@@ -14,6 +16,22 @@ class AuthController extends Controller
     }
     public function proses_login(Request $request)
     {
+        //proses check user from API
+        // $response=Http::withBasicAuth('absen','absen2022')->get('https://presensi.jambikota.go.id/api/Pegawai/?ABSEN-API-KEY=pkap')->json();
+        // // dd($response);
+        // foreach($response as $data){
+        //     $data2=array(
+        //         'id'=>$data['userid'],
+        //         'username'=>$data['nipbaru'],
+        //         'name'=>$data['gldepan'].' '.$data['nama'].' '.$data['glblk'],
+        //         'password'=>bcrypt($data['nipbaru']),
+        //         'role'=>'user',
+        //         'account_verified'=>'1'
+        //     );
+        // }
+        // User::insert($data2);
+
+
         if($request->remember===null){
             setcookie('username',$request->username,100);
             setcookie('password',$request->password,100);

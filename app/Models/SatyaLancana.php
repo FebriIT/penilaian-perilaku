@@ -11,8 +11,8 @@ class SatyaLancana extends Model
     use HasFactory;
 
     protected $table='satyalancana';
-    protected $fillable=['nip','pangkat','nama','jabatan','masakerja','skls','status_verifikasi',
-    'keterangan','status_verifikasi_prof','user_input','user_edit','filesatya','bulan','tahun','opd_id'];
+    protected $fillable=['nip','gl_dpn','nama','gl_blk','tempat_lahir','tgl_lahir','jk','pendidikan_terakhir','no_sk_cpns','tmt_cpns','gol_ruang','tmt_gol_ruang','jabatan','tmt_jabatan','status_verifikasi',
+    'keterangan','status_verifikasi_prof','user_input','user_edit','filesatya','periode_id','opd_id','skls','masakerja'];
 
     public function opd()
     {

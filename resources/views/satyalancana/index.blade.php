@@ -8,7 +8,6 @@
 
 @section('content')
 
-
 <div class="page-content-wrapper ">
 
     <div class="container-fluid">
@@ -16,13 +15,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    {{-- <div class="btn-group float-right">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="#">Annex</a></li>
-                            <li class="breadcrumb-item active">Sart</li>
-                        </ol>
-                    </div> --}}
-                    {{-- <h4 class="page-title">Satyalancana Karya Satya</h4> --}}
+
                 </div>
             </div>
         </div>
@@ -33,10 +26,77 @@
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Periode
+                                        Pengusulan</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="text" data-parsley-type="number"
+                                            data-parsley-maxlength="18" data-parsley-minlength="6" disabled
+                                            value="{{ $dataperiode->title }}">
+                                        {{-- <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul> --}}
+                                        {{-- <p id="nip-error" class="error"></p> --}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Tanggal
+                                        Mulai</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="text" data-parsley-type="number"
+                                            placeholder="199906042002124004" data-parsley-maxlength="18"
+                                            data-parsley-minlength="6" disabled
+                                            value="{{ $dataperiode->start->format('d-M-Y') }}">
+                                        {{-- <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul> --}}
+                                        {{-- <p id="nip-error" class="error"></p> --}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Tanggal
+                                        Berakhir</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="text" data-parsley-type="number"
+                                            placeholder="199906042002124004" data-parsley-maxlength="18"
+                                            data-parsley-minlength="6" disabled
+                                            value="{{ $dataperiode->end->format('d-M-Y') }}">
+                                        {{-- <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul> --}}
+                                        {{-- <p id="nip-error" class="error"></p> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Petunjuk
+                                        Penginputan</label>
+                                    <div class="col-sm-6">
+                                        <a href="#">download <i class="fa fa-download fa-lg mt-3"></i></a>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Contoh File
+                                        Usulan</label>
+                                    <div class="col-sm-6">
+                                        <a href="#">download <i class="fa fa-download fa-lg mt-3"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card m-b-30">
+                    <div class="card-body">
 
                         <h4 class="mt-0 header-title">Data Usulan Satya Lancana
-                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm"
-                                id="tombol-tambah">
+                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
                                 Tambah Data
                             </button>
                         </h4>
@@ -58,56 +118,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
-                                        @foreach ($data as $key=>$row)
-                                        <tr>
-                                            <td>{{ ++$key }}</td>
-                                            <td>{{ $row->nama }} <br>
-                                                NIP.{{ $row->nip }} <br>
-                                                {{ $row->pangkat }}</td>
-                                            <td>{{ $row->jabatan }}</td>
-                                            <td>{{ $row->masakerja }} Thn</td>
-                                            <td>{{$row->skls}}</td>
-                                            <td>{{ $row->opd->namaopd }}</td>
-                                            @if ($row->status_verifikasi==1)
-                                            <td style="background: blue;color:white;"><b>Sedang Di Proses</b></td>
-                                            @elseif ($row->status_verifikasi==2)
-                                            <td style="background: rgb(0, 245, 0);color:white;"><b>Data Sudah
-                                                    Lengkap</b></td>
-                                            @elseif ($row->status_verifikasi==3)
-                                            <td style="background: rgb(245, 0, 0);color:white;"><b>Data Belum
-                                                    Lengkap</b></td>
 
-                                            @endif
-                                            <td>{{ $row->keterangan }}</td>
-
-                                            <td style="white-space: nowrap; width: 15%;">
-                                                <div class="tabledit-toolbar btn-toolbar" style="text-align: center;">
-                                                    <div class="btn-group btn-group-sm" style="float: none;">
-                                                        <a href="/{{ auth()->user()->role }}/satyalancana/download/{{ $row->id }}"
-                                                            class="tabledit-edit-button btn btn-sm btn-primary"
-                                                            style="float: none; margin: 5px;">
-                                                            <span class="ti-download"></span>
-                                                        </a>
-                                                        <a href="#" class="tabledit-edit-button btn btn-sm btn-warning"
-                                                            id="alertify-success" style="float: none; margin: 5px;">
-                                                            <span class="ti-pencil"></span>
-                                                        </a>
-                                                        <a href="/{{ auth()->user()->role }}/satyalancana/{{ $row->id }}/hapus"
-                                                            onclick="return confirm('Are you sure?')"
-                                                            class="tabledit-delete-button btn btn-sm btn-danger"
-                                                            style="float: none; margin: 5px;">
-                                                            <span class="ti-trash"></span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-
-
-                                    </tbody> --}}
                                 </table>
                             </div>
                         </div>
@@ -132,91 +143,181 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="needs-validation" id="form-tambah-edit" name="form-tambah-edit">
+            <form class="needs-validation" id="form-tambah-edit" name="form-tambah-edit" style="font-size: 13px">
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="periode_id" id="periode_id" value="{{ $dataperiode->id }}">
+
+
 
                     <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Periode</label>
-                                <div class="col-sm-10">
-                                    <label for="example-text-input" class="col-form-label">April 2022</label>
-                                </div>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">NIP</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" data-parsley-type="number" placeholder="NIP"
+                                data-parsley-maxlength="18" data-parsley-minlength="6" name="nip" id="nip"
+                                value="{{ old('nip') }}" required>
 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" value="{{ old('gl_dpn') }}" type="text" name="gl_dpn" placeholder="Gelar Depan" id="gl_dpn"
+                                >
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="nama" value="{{ old('nama') }}" placeholder="Nama" id="nama" required>
+                        </div>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" name="gl_blk" value="{{ old('gl_blk') }}" placeholder="Gelar Belakang" id="gl_blk"
+                                >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tempat Lahir</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text"
+                                placeholder="Tempat Lahir" name="tempat_lahir" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="example-text-input" class="col-form-label" >Tanggal Lahir</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="date" name="tgl_lahir" value="{{ old('tgl_lahir') }}" id="tgl_lahir" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 my-1 control-label">Jenis Kelamin</label>
+                        <div class="col-md-4">
+                            <div class="form-check-inline my-1">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="Laki-Laki" name="jk" value='Laki-Laki' @if(old('jk')=='Laki-Laki') checked @endif
+                                        class="custom-control-input" required>
+                                    <label class="custom-control-label" for="Laki-Laki">Laki-Laki</label>
+                                </div>
+                            </div>
+                            <div class="form-check-inline my-1">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="Perempuan" name="jk" value='Perempuan' @if(old('jk')=='Perempuan') checked @endif
+                                        class="custom-control-input">
+                                    <label class="custom-control-label" for="Perempuan">Perempuan</label>
+                                </div>
                             </div>
 
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">NIP</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text"  data-parsley-type="number" placeholder="199906042002124004" data-parsley-maxlength="18" data-parsley-minlength="6"  name="nip" id="nip" required>
-                                    {{-- <ul class="parsley-errors-list filled" ><li class="parsley-required error" id="nip-error"></li></ul> --}}
-                                    {{-- <p id="nip-error" class="error"></p> --}}
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="nama" placeholder="Febri Mubarok, S.Kom" id="nama" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Pangkat</label>
-                                <div class="col-sm-10">
-                                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="pangkat" id="pangkat" required>
-                                        <option value="">-pilih-</option>
-                                        <option value="Juru Muda (I/A)">Juru Muda &nbsp; - &nbsp; (I/A)</option>
-                                        <option value="Juru Muda TK.I (I/B)">Juru Muda TK.I &nbsp; - &nbsp; (I/B)</option>
-                                        <option value="Juru  (I/C)">Juru &nbsp; - &nbsp; (I/C)</option>
-                                        <option value="Juru TK.I (I/D)">Juru TK.I &nbsp; - &nbsp;  (I/D)</option>
-                                        <option value="Pengatur Muda (II/A)">Pengatur Muda &nbsp; - &nbsp; (II/A)</option>
-                                        <option value="Pengatur Muda TK.I (II/B)">Pengatur Muda TK.I &nbsp; - &nbsp; (II/B)</option>
-                                        <option value="Pengatur (II/C)">Pengatur &nbsp; - &nbsp; (II/C)</option>
-                                        <option value="Pengatur TK.I (II/D)">Pengatur TK.I &nbsp; - &nbsp; (II/D)</option>
-                                        <option value="Penata Muda (III/A)">Penata Muda &nbsp; - &nbsp; (III/A)</option>
-                                        <option value="Penata Muda TK.I (III/B)">Penata Muda TK.I &nbsp; - &nbsp; (III/B)</option>
-                                        <option value="Penata (III/C)">Penata &nbsp; - &nbsp; (III/C)</option>
-                                        <option value="Penata TK.I (III/D)">Penata TK.I &nbsp; - &nbsp; (III/D)</option>
-                                        <option value="Pembina (IV/A)">Pembina &nbsp; - &nbsp; (IV/A)</option>
-                                        <option value="Pembina TK.I (IV/B)">Pembina TK.I &nbsp; - &nbsp; (IV/B)</option>
-                                        <option value="Pembina Muda (IV/C)">Pembina Muda &nbsp; - &nbsp; (IV/C)</option>
-                                        <option value="Pembina Madya (IV/D)">Pembina Madya &nbsp; - &nbsp; (IV/D)</option>
-                                        <option value="Pembina Utama (IV/E)">Pembina Utama &nbsp; - &nbsp; (IV/E)</option>
+
+                                <label class="col-sm-4 col-form-label">Pendidikan Terakhir</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control mb-3 custom-select"
+                                        style="width: 100%; height:35px;" name="pendidikan_terakhir" id="pendidikan_terakhir" required>
+                                        <option value="">-- Pilih Pendidikan --</option>
+                                        <option @if(old('pendidikan_terakhir')=='S3') selected @endif value="S3">S3</option>
+                                        <option @if(old('pendidikan_terakhir')=='S2') selected @endif value="S2">S2</option>
+                                        <option @if(old('pendidikan_terakhir')=='S1') selected @endif value="S1">S1</option>
+                                        <option @if(old('pendidikan_terakhir')=='DIPLOMA IV') selected @endif value="DIPLOMA IV">DIPLOMA IV</option>
+                                        <option @if(old('pendidikan_terakhir')=='DIPLOMA III') selected @endif value="DIPLOMA III">DIPLOMA III</option>
+                                        <option @if(old('pendidikan_terakhir')=='DIPLOMA II') selected @endif value="DIPLOMA II">DIPLOMA II</option>
+                                        <option @if(old('pendidikan_terakhir')=='DIPLOMA I') selected @endif value="DIPLOMA I">DIPLOMA I</option>
+                                        <option @if(old('pendidikan_terakhir')=='SLTA UMUM') selected @endif value="SLTA UMUM">SLTA</option>
+                                        <option @if(old('pendidikan_terakhir')=='SLTP UMUM') selected @endif value="SLTP UMUM">SLTP</option>
+                                        <option @if(old('pendidikan_terakhir')=='SD') selected @endif value="SD">SD</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">OPD</label>
-                                <div class="col-sm-10">
-                                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;" name="opd_id" id="opd_id" required>
-                                        <option value="">-pilih-</option>
-                                        @foreach ($opd as $row1)
-                                        <option value="{{ $row1->id }}">{{ $row1->namaopd }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Jabatan</label>
-                                <div class="col-sm-10">
-                                    <textarea id="textarea" name="jabatan" id="jabatan" required class="form-control" maxlength="225" rows="3" placeholder="Kasi Perlindungan Khusus Anak Dinas Pemberdayaan Masyarakat, Perempuan dan Perlindungan Anak Kota Jambi"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Masa Kerja</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="masakerja" placeholder="25" id="masakerja" required data-parsley-maxlength="2" data-parsley-type="number">
-                                    <small class="form-text text-muted" style="color: red;font-style:italic;">note : format .. Tahun</small>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Upload File</label>
-                                <div class="col-sm-10">
-                                    <input type="file" id="input-file-now" name="filesatya" class="dropify" onchange="Filevalidation()" required />
-                                    <small class="form-text text-muted" style="color: red;font-style:italic;">note : file harus PDF dan tidak lebih dari 1000kb / 1mb</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Nomor SK CPNS</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text"
+                                placeholder="Nomor SK CPNS" name="no_sk_cpns" id="no_sk_cpns" value="{{ old('no_sk_cpns') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="example-text-input" class="col-form-label">TMT CPNS</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="date" name="tmt_cpns" id="tmt_cpns"  value="{{ old('tmt_cpns') }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Gol Ruang</label>
+                        <div class="col-sm-4">
+                            <select class="select2 form-control mb-3 custom-select" name="gol_ruang" id="gol_ruang" required>
+                                <option value="">-- Pilih Gol Ruang --</option>
+                                <option @if(old('gol_ruang')=='Juru Muda (I/a)') selected @endif value="Juru Muda (I/a)">Juru Muda (I/a)</option>
+                                <option @if(old('gol_ruang')=='Juru Muda Tingkat I (I/b)') selected @endif value="Juru Muda Tingkat I (I/b)">Juru Muda Tingkat I (I/b)</option>
+                                <option @if(old('gol_ruang')=='Juru (I/c)') selected @endif value="Juru (I/c)">Juru (I/c)</option>
+                                <option @if(old('gol_ruang')=='Juru Tingkat I (I/d)') selected @endif value="Juru Tingkat I (I/d)">Juru Tingkat I (I/d)</option>
+                                <option @if(old('gol_ruang')=='Pengatur Muda (II/a)') selected @endif value="Pengatur Muda (II/a)">Pengatur Muda (II/a)</option>
+                                <option @if(old('gol_ruang')=='Pengatur Muda Tk.I (II/b)') selected @endif value="Pengatur Muda Tk.I (II/b)">Pengatur Muda Tk.I (II/b)</option>
+                                <option @if(old('gol_ruang')=='Pengatur (II/c)') selected @endif value="Pengatur (II/c)">Pengatur (II/c)</option>
+                                <option @if(old('gol_ruang')=='Pengatur Tk.I (II/d)') selected @endif value="Pengatur Tk.I (II/d)">Pengatur Tk.I (II/d)</option>
+                                <option @if(old('gol_ruang')=='Penata Muda (III/a)') selected @endif value="Penata Muda (III/a)">Penata Muda (III/a)</option>
+                                <option @if(old('gol_ruang')=='Penata Muda Tk.I (III/b)') selected @endif value="Penata Muda Tk.I (III/b)">Penata Muda Tk.I (III/b)</option>
+                                <option @if(old('gol_ruang')=='Penata (III/c)') selected @endif value="Penata (III/c)">Penata (III/c)</option>
+                                <option @if(old('gol_ruang')=='Penata Tk.I (III/d)') selected @endif value="Penata Tk.I (III/d)">Penata Tk.I (III/d)</option>
+                                <option @if(old('gol_ruang')=='Pembina (IV/a)') selected @endif value="Pembina (IV/a)">Pembina (IV/a)</option>
+                                <option @if(old('gol_ruang')=='Pembina Tk.I (IV/b)') selected @endif value="Pembina Tk.I (IV/b)">Pembina Tk.I (IV/b)</option>
+                                <option @if(old('gol_ruang')=='Pembina Utama Muda (IV/c)') selected @endif value="Pembina Utama Muda (IV/c)">Pembina Utama Muda (IV/c)</option>
+                                <option @if(old('gol_ruang')=='Pembina Utama Madya (IV/d)') selected @endif value="Pembina Utama Madya (IV/d)">Pembina Utama Madya (IV/d)</option>
+                                <option @if(old('gol_ruang')=='Pembina Utama (IV/e)') selected @endif value="Pembina Utama (IV/e)">Pembina Utama (IV/e)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="example-text-input" class="col-form-label">TMT Gol Ruang</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="DATE" name="tmt_gol_ruang" id="tmt_gol_ruang" value="{{ old('tmt_gol_ruang') }}" required>
+                        </div>
 
-                                    <p id="size"></p>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">OPD</label>
+                        <div class="col-sm-4">
+                            <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:35px;"
+                                name="opd_id" id="opd_id" required>
+                                <option value="">-pilih-</option>
+                                @foreach ($opd as $row1)
+                                <option value="{{ $row1->id }}">{{ $row1->namaopd }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                        <label class="col-form-label">Masa Kerja</label>
 
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" data-parsley-type="number" name="masakerja" id="masakerja" value="{{ old('masakerja') }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Jabatan</label>
+                        <div class="col-sm-5">
+                            <textarea id="textarea" name="jabatan" id="jabatan" required class="form-control"
+                                maxlength="225" rows="3"
+                                placeholder="Jabatan">{{ old('jabatan') }}</textarea>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="example-text-input" class="col-form-label">TMT Jabatan</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="date" name="tmt_jabatan" id="tmt_jabatan" value="{{ old('tmt_jabatan') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Upload File</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="input-file-now" name="filesatya" class="dropify"
+                                onchange="Filevalidation()" required />
+                            <small class="form-text text-muted" style="color: red;font-style:italic;">note : Seluruh berkas persyaratan dibuat dalam satu format pdf dan tidak lebih dari 1000kb / 1mb</small>
+
+                            <p id="size"></p>
+
+                        </div>
+                    </div>
 
 
 
@@ -229,15 +330,16 @@
         </div>
     </div>
 </div>
+
 @stop
 
 @section('javascript')
 <script src="{{ asset('js/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{asset('template/assets/plugins/dropzone/dist/dropzone.js')}}"></script>
-        <script src="{{asset('template/assets/plugins/dropify/js/dropify.min.js')}}"></script>
-        <!-- Parsley js -->
-        <script type="text/javascript" src="{{ asset('template/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
-        <script src="{{ asset('template/assets/plugins/select2/select2.min.js') }}" type="text/javascript"></script>
+<script src="{{asset('template/assets/plugins/dropify/js/dropify.min.js')}}"></script>
+<!-- Parsley js -->
+<script type="text/javascript" src="{{ asset('template/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
+<script src="{{ asset('template/assets/plugins/select2/select2.min.js') }}" type="text/javascript"></script>
 <script>
     Filevalidation = () => {
         const fi = document.getElementById('input-file-now');
@@ -250,21 +352,21 @@
                 // The size of the file.
                 if (file >= 1000) {
                     alertify.error('Data tidak boleh lebih dari 1000kb / 1mb')
-                    document.getElementById('size').innerHTML = '<b>'
-                    + file + '</b> KB';
+                    document.getElementById('size').innerHTML = '<b>' +
+                        file + '</b> KB';
 
-                      $("#tombol-simpan").attr("disabled",true);
+                    $("#tombol-simpan").attr("disabled", true);
                 } else if (file < 100) {
                     alertify.error('Data tidak boleh kurang dari 100kb')
-                    document.getElementById('size').innerHTML = '<b>'
-                    + file + '</b> KB';
+                    document.getElementById('size').innerHTML = '<b>' +
+                        file + '</b> KB';
 
 
-                      $("#tombol-simpan").attr("disabled",true);
+                    $("#tombol-simpan").attr("disabled", true);
                 } else {
-                    document.getElementById('size').innerHTML = '<b>'
-                    + file + '</b> KB';
-                    $("#tombol-simpan").attr("disabled",false);
+                    document.getElementById('size').innerHTML = '<b>' +
+                        file + '</b> KB';
+                    $("#tombol-simpan").attr("disabled", false);
                 }
             }
         }
@@ -272,11 +374,11 @@
 
     $(document).ready(function () {
         $("#pangkat").select2({
-           width: '100%'
-       });
+            width: '100%'
+        });
         $("#opd_id").select2({
-           width: '100%'
-       });
+            width: '100%'
+        });
 
 
         $('form').parsley();
@@ -286,7 +388,7 @@
             }
         });
 
-        var table=$('#datatable1').DataTable({
+        var table = $('#datatable1').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ url('/'.auth()->user()->role.'/satyalancana') }}",
@@ -302,32 +404,32 @@
                     name: 'nama'
                 },
                 {
-                    data:'jabatan',
-                    name:'jabatan'
+                    data: 'jabatan',
+                    name: 'jabatan'
                 },
                 {
-                    data:'masakerja',
-                    name:'masakerja'
+                    data: 'masakerja',
+                    name: 'masakerja'
                 },
                 {
-                    data:'skls',
-                    name:'skls'
+                    data: 'skls',
+                    name: 'skls'
                 },
                 {
-                    data:'opd',
-                    name:'opd'
+                    data: 'opd',
+                    name: 'opd'
                 },
                 {
-                    data:'status',
-                    name:'status'
+                    data: 'status',
+                    name: 'status'
                 },
                 {
-                    data:'keterangan',
-                    name:'keterangan'
+                    data: 'keterangan',
+                    name: 'keterangan'
                 },
                 {
-                    data:'created_at',
-                    name:'created_at'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
                     data: 'action',
@@ -346,8 +448,8 @@
         // tombol tambah data
         $('#tombol-tambah').click(function () {
             $('#id').val(''); //valuenya menjadi kosong
-            $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
-            $('#modal-judul').html("Tambah Data Satya Lancana"); //valuenya tambah pegawai baru
+            // $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
+            $('#modal-judul').html("Tambah Data Usulan"); //valuenya tambah pegawai baru
             $('#tambah-edit-modal').modal('show');
             // console.log('sukses');
         });
@@ -358,8 +460,8 @@
                 submitHandler: function (form) {
                     var actionType = $('#tombol-simpan').val();
                     var simpan = $('#tombol-simpan').html('Sending..');
-                    // console.log('ok');
                     var form = $("#form-tambah-edit")[0];
+                    // console.log('ok');
                     // Create an FormData object
                     var data = new FormData(form);
                     $.ajax({
@@ -384,10 +486,10 @@
                             var oTable = $('#datatable1')
                                 .dataTable(); //inialisasi datatable
                             oTable.fnDraw(false); //reset datatable
-                            if(data=='berhasil'){
+                            if (data == 'berhasil') {
                                 alertify.success('Data Berhasil Dibuat');
 
-                            }else if(data=='gagal'){
+                            } else if (data == 'gagal') {
 
                                 alertify.success(data);
                             }
@@ -408,7 +510,8 @@
             alertify.confirm('Data SatyaLancana ini akan dihapus, Apa anda yakin ?', function () {
                 $.ajax({
 
-                    url: "/{{ auth()->user()->role }}/satyalancana/" + dataid, //eksekusi ajax ke url ini
+                    url: "/{{ auth()->user()->role }}/satyalancana/" +
+                    dataid, //eksekusi ajax ke url ini
                     type: 'delete',
                     success: function (data) { //jika sukses
                         setTimeout(function () {
@@ -447,43 +550,43 @@
 
 
         // Basic
-                $('.dropify').dropify();
+        $('.dropify').dropify();
 
-                // Translated
-                $('.dropify-fr').dropify({
-                    messages: {
-                        default: 'Glissez-déposez un fichier ici ou cliquez',
-                        replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                        remove:  'Supprimer',
-                        error:   'Désolé, le fichier trop volumineux'
-                    }
-                });
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
 
-                // Used events
-                var drEvent = $('#input-file-events').dropify();
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
 
-                drEvent.on('dropify.beforeClear', function(event, element){
-                    return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-                });
+        drEvent.on('dropify.beforeClear', function (event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
 
-                drEvent.on('dropify.afterClear', function(event, element){
-                    alert('File deleted');
-                });
+        drEvent.on('dropify.afterClear', function (event, element) {
+            alert('File deleted');
+        });
 
-                drEvent.on('dropify.errors', function(event, element){
-                    console.log('Has Errors');
-                });
+        drEvent.on('dropify.errors', function (event, element) {
+            console.log('Has Errors');
+        });
 
-                var drDestroy = $('#input-file-to-destroy').dropify();
-                drDestroy = drDestroy.data('dropify')
-                $('#toggleDropify').on('click', function(e){
-                    e.preventDefault();
-                    if (drDestroy.isDropified()) {
-                        drDestroy.destroy();
-                    } else {
-                        drDestroy.init();
-                    }
-                })
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function (e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
     });
 </script>
 @endsection

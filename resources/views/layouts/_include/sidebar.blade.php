@@ -3,6 +3,7 @@
     <div class="text-center">
         {{-- <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a> --}}
         <a href="/" class="logo"><img src="{{ asset('img/bg.png') }}" height="80" alt="logo"></a>
+        <h5></h5>
     </div>
 </div>
 
@@ -10,7 +11,7 @@
 
     <div id="sidebar-menu">
         <ul>
-            {{-- <li class="menu-title">Main</li> --}}
+            {{-- <li class="menu-title">{{ auth()->user()->username }}</li> --}}
 
             <li>
                 <a href="/{{ auth()->user()->role }}/dashboard" class="waves-effect">
@@ -39,6 +40,12 @@
                 <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
                     <span> OPD </span>
+                </a>
+            </li>
+            <li>
+                <a href="/{{ auth()->user()->role }}/periode" class="waves-effect">
+                    <i class="mdi mdi-domain"></i>
+                    <span> Periode </span>
                 </a>
             </li>
             @endif
