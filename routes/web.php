@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SatyaLancanaController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\UserController;
 use App\Models\SatyaLancana;
 
 /*
@@ -33,16 +34,24 @@ Route::get('/test',[ApiAbsensiController::class,'index']);
 Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
+    Route::get('/datauser', [UserController::class, 'index']);
+
+    Route::get('satyalancana/export/', [SatyaLancanaController::class, 'export']);
     Route::get('/satyalancana/download/{id}', [SatyaLancanaController::class,'getDownload']);
+    Route::get('/satyalancana/export/pdf', [SatyaLancanaController::class,'exportpdf']);
     Route::get('/satyalancana', [SatyaLancanaController::class,'index'])->name('satya.admin');
     Route::post('/satyalancana', [SatyaLancanaController::class,'store']);
     Route::delete('/satyalancana/{id}', [SatyaLancanaController::class,'destroy']);
+    Route::delete('/satyalancana/deleteall', [SatyaLancanaController::class,'destroyall'])->name('destroyall');
+    Route::get('/satyalancana/{id}/edit', [SatyaLancanaController::class,'edit']);
+    
+
 
 
     // Route::resource('/satyalancana',SatyaLancanaController::class);
     Route::resource('opd', OpdController::class)->except(['show','update']);
     Route::get('/periode', [PeriodeController::class,'index']);
-    Route::post('/periode', [PeriodeController::class,'store']);
+    Route::post('/periode', [PeriodeController::class,'store'])->name('post.periode');
     Route::delete('/periode/{id}', [PeriodeController::class,'destroy']);
     Route::get('/periode/{id}/edit', [PeriodeController::class,'edit']);
 

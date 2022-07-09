@@ -22,7 +22,7 @@ class DashboardController extends Controller
             $databelumlengkap=SatyaLancana::where('status_verifikasi',3)->count();
             $dataadmin=SatyaLancana::where('user_input',1)->count();
             $datauser=SatyaLancana::where('user_input',2)->count();
-
+            
             $data=SatyaLancana::orderBy('id','desc')->get();
             return view('dashboard',compact('data','countsatya','sedangdiproses','datasudahlengkap','databelumlengkap','dataadmin','datauser'));
         }else{

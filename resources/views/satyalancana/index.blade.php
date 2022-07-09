@@ -80,6 +80,15 @@
                                         <a href="#">download <i class="fa fa-download fa-lg mt-3"></i></a>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-6 col-form-label">Export Data</label>
+                                    <div class="col-sm-3">
+                                        <a href="/admin/satyalancana/export">Excel <i class="fa fa-download fa-lg mt-3"></i></a>&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <a href="/admin/satyalancana/export/pdf">PDF <i class="fa fa-download fa-lg mt-3"></i></a>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -99,6 +108,11 @@
                             <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
                                 Tambah Data
                             </button>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete-all" style="display: none" data-url="{{ route('destroyall') }}">
+                                <i class="fa fa-trash">
+                                    <span id="lengthcek">0</span>
+                                </i> Delete Selected
+                            </a>
                         </h4>
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">
@@ -106,6 +120,11 @@
                                     style="font-size: 13px" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                            <th>
+                                                <div id="checkAll">
+                                                    <input type="checkbox" class="checkall" />
+                                                </div>
+                                            </th>
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Jabatan</th>
@@ -340,6 +359,8 @@
 <!-- Parsley js -->
 <script type="text/javascript" src="{{ asset('template/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
 <script src="{{ asset('template/assets/plugins/select2/select2.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/checked.js') }}"></script>
+
 <script>
     Filevalidation = () => {
         const fi = document.getElementById('input-file-now');
@@ -389,10 +410,18 @@
         });
 
         var table = $('#datatable1').DataTable({
+            
             processing: true,
             serverSide: true,
+            ordering: false,
             ajax: "{{ url('/'.auth()->user()->role.'/satyalancana') }}",
-            columns: [{
+            
+            columns: [
+                {
+                    data: 'checkedd',
+                    name: 'checkedd'
+                },
+                {
                     data: null,
                     sortable: false,
                     render: function (data, type, row, meta) {
@@ -448,7 +477,7 @@
         // tombol tambah data
         $('#tombol-tambah').click(function () {
             $('#id').val(''); //valuenya menjadi kosong
-            // $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
+             $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
             $('#modal-judul').html("Tambah Data Usulan"); //valuenya tambah pegawai baru
             $('#tambah-edit-modal').modal('show');
             // console.log('sukses');
@@ -539,10 +568,20 @@
                 $('#tambah-edit-modal').modal('show');
 
                 $('#id').val(data.id);
-                $('#namaopd').val(data.namaopd);
+                $('#nama').val(data.nama);
+                $('#nip').val(data.nip);
+                $('#gl_dpn').val(data.gl_dpn);
+                $('#gl_blk').val(data.gl_blk);
+                $('#tempat_lahir').val(data.tempat_lahir);
+                $('#tgl_lahir').val(data.tgl_lahir);
+                $('#no_sk_cpns').val(data.no_sk_cpns);
+                $('#jabatan').val(data.jabatan);
+                $('#masakerja').val(data.masakerja);
 
             })
         });
+        
+        
 
 
 
@@ -588,5 +627,108 @@
             }
         })
     });
+
+    {{--  $(document).ready(function () {
+
+
+        $('#checkall').on('click', function(e) {
+            if($(this).is(':checked',true))  
+            {
+                $(".checkedd").prop('checked', true); 
+                
+            } else {  
+                
+                $(".checkedd").prop('checked',false);  
+            }  
+        });
+
+
+        $('#hapus-data').on('click', function(e) {
+
+            var allVals = [];  
+            $(".checkedd:checked").each(function() {  
+                allVals.push($(this).attr('data-id'));
+            });  
+
+            if(allVals.length <=0)  
+            {  
+                alert("Please select row.");  
+            }  else {  
+
+
+                var check = confirm("Are you sure you want to delete this row?");  
+                if(check == true){  
+
+
+                    var join_selected_values = allVals.join(","); 
+
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'DELETE',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                            if (data['success']) {
+                                $(".checkedd:checked").each(function() {  
+                                    $(this).parents("tr").remove();
+                                });
+                                alert(data['success']);
+                            } else if (data['error']) {
+                                alert(data['error']);
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+
+
+                  $.each(allVals, function( index, value ) {
+                      $('table tr').filter("[data-row-id='" + value + "']").remove();
+                  });
+                }  
+            }  
+        });
+
+
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            onConfirm: function (event, element) {
+                element.trigger('confirm');
+            }
+        });
+
+
+        $(document).on('confirm', function (e) {
+            var ele = e.target;
+            alert(ele);
+            e.preventDefault();
+
+
+            $.ajax({
+                url: ele.href,
+                type: 'DELETE',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                success: function (data) {
+                    if (data['success']) {
+                        $("#" + data['tr']).slideUp("slow");
+                        alert(data['success']);
+                    } else if (data['error']) {
+                        alert(data['error']);
+                    } else {
+                        alert('Whoops Something went wrong!!');
+                    }
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+
+
+            return false;
+        });
+    });  --}}
 </script>
 @endsection

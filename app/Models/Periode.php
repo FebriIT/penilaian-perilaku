@@ -10,7 +10,7 @@ class Periode extends Model
     use HasFactory;
 
     protected $table='periode';
-    protected $fillable=['title','status'];
+    protected $fillable=['title','status','start','end'];
     protected $dates=['start','end'];
 }
 

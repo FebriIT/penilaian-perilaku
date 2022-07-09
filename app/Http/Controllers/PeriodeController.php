@@ -58,6 +58,7 @@ class PeriodeController extends Controller
             $data=Periode::where('status',1)->update(['status'=>0]);
 
         }
+        
         $data=Periode::updateOrCreate(['id'=>$id],
             [
                 'title'=>$request->title,'start'=>$request->start,'end'=>$request->end,'status'=>$request->status
@@ -71,7 +72,10 @@ class PeriodeController extends Controller
     public function destroy($id)
     {
         $periode = periode::find($id);
+        
         $satya=SatyaLancana::where('periode_id',$periode->periode_id)->delete();
+        // app('App\Http\Controllers\SatyaLancana?')->hapus();
+
         $periode->delete();
         return response()->json($periode);
     }

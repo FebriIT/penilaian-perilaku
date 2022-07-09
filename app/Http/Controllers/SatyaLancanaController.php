@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SatyaLancanaExport;
 use Illuminate\Http\Request;
 use App\Models\SatyaLancana;
 use App\Models\Opd;
 use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
-
-
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+use Illuminate\Support\Facades\DB;
 class SatyaLancanaController extends Controller
 {
     public function index(Request $request)
@@ -29,6 +31,9 @@ class SatyaLancanaController extends Controller
                     $nama=$f->nama.'<br> NIP.'.$f->nip.'<br> '.$f->pangkat;
                     return $nama;
                 })
+                ->addColumn('checkedd',function($f){
+                    return '<input type="checkbox" name="check_data" class="checkboks" value="'.$f->id.'" id="select'.$f->id.'">';
+                })
                 ->addColumn('action',function($f){
 
                     $button='<div class="tabledit-toolbar btn-toolbar" style="text-align: center;">';
@@ -38,7 +43,7 @@ class SatyaLancanaController extends Controller
                                                                 style="float: none; margin: 5px;">
                                                                 <span class="ti-download"></span>
                                                             </a>';
-                    // $button.='<button class="tabledit-edit-button btn btn-sm btn-warning edit-post" data-id='.$f->id.' id="alertify-success" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>';
+                    $button.='<button class="tabledit-edit-button btn btn-sm btn-warning edit-post" data-id='.$f->id.' id="alertify-success" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>';
                     $button.='<button class="tabledit-delete-button btn btn-sm btn-danger delete" data-id='.$f->id.' style="float: none; margin: 5px;"><span class="ti-trash"></span></button>';
                     $button.='</div>';
                     $button.='</div>';
@@ -69,11 +74,11 @@ class SatyaLancanaController extends Controller
                 })
                 ->addColumn('created_at',function($f){
                     $created_at=$f->created_at;
-                    // dd($created_at);
+                    // dd($created_at);     
                     return $created_at;
                 })
 
-                ->rawColumns(['action','nama','opd','status'])
+                ->rawColumns(['action','nama','opd','status','checkedd'])
                 ->addIndexColumn()
                 ->make(true);
             }
@@ -142,7 +147,7 @@ class SatyaLancanaController extends Controller
     }
 
 
-
+    
     public function hapus($id)
     {
         $satya = SatyaLancana::find($id);
@@ -236,9 +241,10 @@ class SatyaLancanaController extends Controller
         return response()->json($pesan);
     }
 
-    public function destroy($id)
+    public function destroy($dataid)
     {
-        $satya = SatyaLancana::find($id);
+        dd($dataid);
+        $satya = SatyaLancana::find($dataid);
         $opd=Opd::find($satya->opd_id)->namaopd;
         $namainput=User::find($satya->user_input)->username;
 
@@ -252,13 +258,50 @@ class SatyaLancanaController extends Controller
 
         return response()->json($satya);
     }
+    public function destroyall(Request $request)
+    {
+        dd($request->ajax());
+        if($request->ajax())
+        {
+            foreach($request->id as $row => $key){
+                $buku = SatyaLancana::find($request->id[$row]);
+                $buku->delete();
+            }
+        }
+        return response()->json([
+            'success' => 'Data telah di hapus !'
+        ]);
+
+        
+    }
 
     public function edit($id)
     {
         $where = array('id' => $id);
-        $post  = Opd::where($where)->first();
+        $post  = SatyaLancana::where($where)->first();
 
         return response()->json($post);
     }
+
+    public function export()
+    {
+        
+        return Excel::download(new SatyaLancanaExport, 'SatyaLancana.xlsx');
+    }
+    public function exportpdf()
+    {
+        $tglskrng=date('d F Y', strtotime(now()));
+
+        $p=SatyaLancana::orderBy('opd_id','desc')->get();
+        $periode=Periode::where('status',1)->first();
+        // dd($periode);
+        view()->share('p', $p);
+        $customPaper = array(0,0,595.275590,935.43307);
+        $pdf_doc = PDF::loadView('satyalancana.downloadpdf', compact('p','periode'))->setPaper($customPaper, 'landscape');
+
+        return $pdf_doc->download('Laporan Satya Lancana.pdf');
+    }
+
+    
 
 }

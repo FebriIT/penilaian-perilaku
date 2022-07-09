@@ -28,6 +28,7 @@
                     <li><a href="/{{auth()->user()->role}}/inputsatyalancana">Input Usulan</a></li>
                 </ul>
             </li> --}}
+            
             <li>
                 <a href="/{{auth()->user()->role}}/satyalancana" class="waves-effect">
                     <i class="mdi mdi-folder-multiple-outline"></i>
@@ -35,7 +36,12 @@
                 </a>
             </li>
             @if (auth()->user()->role=='admin')
-
+            <li>
+                <a href="/{{auth()->user()->role}}/datauser" class="waves-effect">
+                    <i class="mdi mdi-folder-multiple-outline"></i>
+                    <span> Data User </span>
+                </a>
+            </li>
             <li>
                 <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
