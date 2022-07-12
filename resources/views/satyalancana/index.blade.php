@@ -103,17 +103,32 @@
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
 
-                        <h4 class="mt-0 header-title">Data Usulan Satya Lancana
-                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
-                                Tambah Data
-                            </button>
-                            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete-all" style="display: none" data-url="{{ route('destroyall') }}">
-                                <i class="fa fa-trash">
-                                    <span id="lengthcek">0</span>
-                                </i> Delete Selected
-                            </a>
-                        </h4>
+                                <h4 class="mt-0 header-title">Data Usulan Satya Lancana
+                                    
+                                    
+                                    
+                                    
+                                    <button type="button" class="btn btn-primary mb-2 ml-2  float-right btn-sm" id="tombol-tambah">
+                                        Tambah Data
+                                    </button>
+                                </h4>
+                            </div>
+                            <div class="col-12">
+                                
+                                <button type="button" class="btn btn-success mb-2 ml-2  float-right btn-sm update-status" disabled data-status="2" id="sdh-lngkp">
+                                    Sudah Lengkap
+                                </button>
+                                <button type="button" class="btn btn-danger mb-2 ml-2  float-right btn-sm update-status" disabled data-status="3" id="blm-lngkp">
+                                    Belum Lengkap
+                                </button>
+                                <button type="button" class="btn btn-primary mb-2 ml-2  float-right btn-sm update-status" data-status="1" disabled id="sdg-prses">
+                                    Sedang Diproses
+                                </button>
+                            </div>
+                        </div>
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">
                                 <table id="datatable1" class="table table-striped table-bordered table-sm text-center"

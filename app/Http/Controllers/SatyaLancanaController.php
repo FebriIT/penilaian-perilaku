@@ -301,6 +301,18 @@ class SatyaLancanaController extends Controller
 
         return $pdf_doc->download('Laporan Satya Lancana.pdf');
     }
+    public function update(Request $request)
+    {
+        $status=$request->status;
+
+       
+        foreach($request->id as $row){
+            SatyaLancana::find($row)->update(['status_verifikasi'=>$status]);
+        }
+        // $data='ok';
+
+        return response()->json();
+    }
 
     
 

@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::delete('/satyalancana/{id}', [SatyaLancanaController::class,'destroy']);
     Route::delete('/satyalancana/deleteall', [SatyaLancanaController::class,'destroyall'])->name('destroyall');
     Route::get('/satyalancana/{id}/edit', [SatyaLancanaController::class,'edit']);
+    Route::post('/satyalancana/update',[SatyaLancanaController::class,'update'])->name('satya.update');
     
 
 

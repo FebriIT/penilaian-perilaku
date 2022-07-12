@@ -1,23 +1,42 @@
-let idDelete = [];
+let idData = [];
 let Otable;
 
-$(document).on('click', '.delete-all', function(e){
+$(document).on('click', '.update-status', function(e){
    
     e.preventDefault();
     let url = $(this).data('url');
-    
-    alertify.confirm('Data SatyaLancana ini akan dihapus, Apa anda yakin ?', function () {
-        console.log(url);
+    let dStatus= $(this).attr('data-status');
+    console.log(dStatus);
+    alertify.confirm('Data SatyaLancana ini akan diupdate, Apa anda yakin ?', function () {
+        // console.log(idData);
         $.ajax({
-            type:'POST',    
-            url: url,
             data: {
-                _method: 'DELETE',
-                id : idDelete,
+                id : idData,
+                status : dStatus,
+            }, //function yang dipakai agar value pada form-control seperti input, textarea, select dll dapat digunakan pada URL query string ketika melakukan ajax request
+            url: "/admin/satyalancana/update", //url simpan data
+            type: "POST", //karena simpan kita pakai method POST
+            dataType: 'json',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            success: function () { //jika berhasil
+                // console.log(data);
+                var oTable = $('#datatable1')
+                .dataTable(); //inialisasi datatable
+                oTable.fnDraw(false); //reset datatable
+                 $('#checkAll').html('');
+                 $('#checkAll').html(`<input type="checkbox" class="checkall" id="emailCheck">`);
+                 idData = [];
+                 $(".update-status").prop('disabled', true);
+                 $('#lengthcek').html(' ('+idData.length+')');
+                alertify.success('Data Berhasil Diperbaharui !!');
+                
             },
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            error: function (data) { //jika error tampilkan error pada console
+                console.log('Error:', data);
+                $('#tombol-simpan').html('Simpan');
+            }
         });
-        alertify.success('Data berhasil dihapus')
+        
 
     }, function () {
         alertify.error('Cancel')
@@ -30,10 +49,10 @@ $(document).on('click', '.delete-all', function(e){
 $(document).on('change', '.checkboks', function(e){
     let id = $(this).val();
     if($(this).is(':checked')){
-        idDelete.push(id);
+        idData.push(id);
         checkedContent();
     }else {
-        removeA(idDelete, id);
+        removeA(idData, id);
         uncheckedContent();
     }
     DeleteAll();
@@ -64,7 +83,7 @@ function removeA(arr) {
 
 function checkedContent()
 {
-    $.each(idDelete, function(index, value){
+    $.each(idData, function(index, value){
         $('#select'+value).prop("checked", true);
     });
 
@@ -111,24 +130,27 @@ function uncheckedContent()
 function checkAll()
 {
     $("input:checkbox[name=check_data]:checked").each(function(){
-        idDelete.push($(this).val());
+        idData.push($(this).val());
     });
 }
 
 function uncheckAll(){
     $("input:checkbox[name=check_data]").each(function(){
         var val = $(this).val();
-        idDelete.splice(idDelete.indexOf(val), 1);
+        idData.splice(idData.indexOf(val), 1);
     });
 }
 
 function DeleteAll()
 {
-    if(idDelete.length > 0)
+    if(idData.length > 0)
     {
         $('.delete-all').show();
-        $('#lengthcek').html(' '+idDelete.length);
+        $(".update-status").prop('disabled', false);
+        $('#lengthcek').html(' ('+idData.length+')');
     } else {
         $('.delete-all').hide();
+        $(".update-status").prop('disabled', true);
+
     }
 }

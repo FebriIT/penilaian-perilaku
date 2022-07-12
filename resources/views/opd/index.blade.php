@@ -184,7 +184,7 @@
                         type: "POST", //karena simpan kita pakai method POST
                         dataType: 'json',
                         success: function (data) { //jika berhasil
-                            console.log('ok');
+                            // console.log('ok');
                             $('#form-tambah-edit').trigger("reset"); //form
 
                             $('#tambah-edit-modal').modal('hide'); //modal hide
