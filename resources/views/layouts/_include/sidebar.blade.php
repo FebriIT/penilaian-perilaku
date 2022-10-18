@@ -44,9 +44,15 @@
                 </a>
             </li>
             <li>
-                <a href="/{{ auth()->user()->role }}/periode" class="waves-effect">
+                <a href="/{{ auth()->user()->role }}/pertanyaan" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
-                    <span> Periode </span>
+                    <span> Pertanyaan </span>
+                </a>
+            </li>
+            <li>
+                <a href="/{{ auth()->user()->role }}/penilaian" class="waves-effect">
+                    <i class="mdi mdi-domain"></i>
+                    <span> Penilaian </span>
                 </a>
             </li>
             @endif

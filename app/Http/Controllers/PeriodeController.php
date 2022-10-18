@@ -58,7 +58,8 @@ class PeriodeController extends Controller
 
             $data=Periode::updateOrCreate(['id'=>$id],
                 [
-                    'title'=>$request->title,
+                    'nip'=>$request->nip,
+                    'nama'=>$request->nama,
                     'start'=>$request->start,
                     'end'=>$request->end,
                     'status'=>$request->status,

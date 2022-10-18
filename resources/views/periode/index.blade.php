@@ -42,7 +42,7 @@
                 <div class="card m-b-30">
                     <div class="card-body">
 
-                        <h4 class="mt-0 header-title">Periode Usulan
+                        <h4 class="mt-0 header-title">Penilaian Perilaku Pegawai
                             <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
                                 Tambah Data
                             </button>
@@ -53,7 +53,8 @@
                                     style="font-size: 13px" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Judul</th>
+                                            <th>NIP</th>
+                                            <th>Nama</th>
                                             <th>Max Penilai</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -140,10 +141,19 @@
                     <input type="hidden" name="id" id="id">
                     
                     <div class="form-group dNone" style="display: none">
-                        <h6 class="text-muted fw-400">Judul</h6>
+                        <h6 class="text-muted fw-400">Nomor Induk Pegawai</h6>
                         <div>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Title.." required>
+                                <input type="number" class="form-control" name="nip" id="nip" placeholder="Input NIP" required>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group dNone" style="display: none">
+                        <h6 class="text-muted fw-400">Nama Lengkap</h6>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama beserta gelar." required>
 
                             </div>
                         </div>
@@ -237,12 +247,16 @@
         var table = $('#datatable1').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ url('/'.auth()->user()->role.'/periode') }}",
+            ajax: "{{ url('/'.auth()->user()->role.'/penilaian') }}",
             columns: [
 
                 {
-                    data: 'title',
-                    name: 'title'
+                    data: 'nip',
+                    name: 'nip'
+                },
+                {
+                    data: 'nama',
+                    name: 'nama'
                 },
                 {
                     data: 'max_penilai',
@@ -321,7 +335,7 @@
         $('body').on('click', '.delete', function (id) {
             var dataid = $(this).attr('data-id');
             // alert(dataid);
-            alertify.confirm('Seluruh data yang berkaitan di periode ini akan ikut terhapus, apa anda yakin ?', function () {
+            alertify.confirm('Seluruh data yang berkaitan dengan penilaian ini akan ikut terhapus, apa anda yakin ?', function () {
                 $.ajax({
 
                     url: "/{{ auth()->user()->role }}/periode/" +dataid, //eksekusi ajax ke url ini
@@ -353,7 +367,8 @@
                 $('#tambah-edit-modal').modal('show');
 
                 $('#id').val(data.id);
-                $('#title').val(data.title);
+                $('#nip').val(data.nip);
+                $('#nama').val(data.nama);
                 $('#max_penilai').val(data.max_penilai);
                 $('#start').val(data.start);
                 $('#end').val(data.end);

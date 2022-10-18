@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">{{ $datasudahlengkap }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $datasudahlengkap }}</h5>  --}}
                                     <p class="mb-0 text-muted">Data Sudah Lengkap</p>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-9 text-center align-self-center">
                                 <div class="m-l-10 ">
-                                    <h5 class="mt-0 round-inner">{{ $databelumlengkap }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $databelumlengkap }}</h5>  --}}
                                     <p class="mb-0 text-muted">Data Belum Lengkap</p>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10 ">
-                                    <h5 class="mt-0 round-inner">{{ $sedangdiproses }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $sedangdiproses }}</h5>  --}}
                                     <p class="mb-0 text-muted">Sedang Diproses</p>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">{{ $countsatya }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $countsatya }}</h5>  --}}
                                     <p class="mb-0 text-muted">Total Data Usulan</p>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">{{ $dataadmin }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $dataadmin }}</h5>  --}}
                                     <p class="mb-0 text-muted">Admin</p>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                             </div>
                             <div class="col-9 align-self-center text-center">
                                 <div class="m-l-10">
-                                    <h5 class="mt-0 round-inner">{{ $datauser }}</h5>
+                                    {{--  <h5 class="mt-0 round-inner">{{ $datauser }}</h5>  --}}
                                     <p class="mb-0 text-muted">User</p>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key=>$row)
+                                        {{--  @foreach ($data as $key=>$row)
                                         <tr>
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $row->nama }} <br>
@@ -205,7 +205,7 @@
 
 
                                         </tr>
-                                        @endforeach
+                                        @endforeach  --}}
 
 
                                     </tbody>

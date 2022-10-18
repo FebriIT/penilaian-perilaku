@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SatyaLancanaController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\UserController;
 use App\Models\SatyaLancana;
 
@@ -41,10 +42,13 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
     // Route::resource('/satyalancana',SatyaLancanaController::class);
     Route::resource('opd', OpdController::class)->except(['show','update']);
-    Route::get('/periode', [PeriodeController::class,'index']);
+    Route::get('/penilaian', [PeriodeController::class,'index']);
     Route::post('/periode', [PeriodeController::class,'store'])->name('post.periode');
     Route::delete('/periode/{id}', [PeriodeController::class,'destroy']);
     Route::get('/periode/{id}/edit', [PeriodeController::class,'edit']);
+
+    Route::get('/pertanyaan', [PertanyaanController::class,'index']);
+    
 
     // Route::
 
