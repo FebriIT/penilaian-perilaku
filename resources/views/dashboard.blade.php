@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <marquee style="color: red;">Mohon maaf website sedang maintenance</marquee>
+                    {{--  <marquee style="color: red;">Mohon maaf website sedang maintenance</marquee>  --}}
 
                     {{-- <h4 class="page-title">Dashboard</h4> --}}
                 </div>

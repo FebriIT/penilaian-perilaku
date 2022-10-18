@@ -53,17 +53,26 @@ class PeriodeController extends Controller
     {
         // dd($request->all());
         $id=$request->id;
-        $check=Periode::where('status',1)->exists();
-        if($check && $request->status=='1'){
-            $data=Periode::where('status',1)->update(['status'=>0]);
-
-        }
         
-        $data=Periode::updateOrCreate(['id'=>$id],
-            [
-                'title'=>$request->title,'start'=>$request->start,'end'=>$request->end,'status'=>$request->status
-            ]
-        );
+        if($id==null){
+
+            $data=Periode::updateOrCreate(['id'=>$id],
+                [
+                    'title'=>$request->title,
+                    'start'=>$request->start,
+                    'end'=>$request->end,
+                    'status'=>$request->status,
+                    'max_penilai'=>$request->max_penilai
+                ]
+            );
+        }else{
+            $data=Periode::updateOrCreate(['id'=>$id],
+                [
+                    'max_penilai'=>$request->max_penilai,
+                    'status'=>$request->status
+                ]
+            );
+        }
         // dd($check);
 
         return response()->json($data);
@@ -73,9 +82,6 @@ class PeriodeController extends Controller
     {
         $periode = periode::find($id);
         
-        $satya=SatyaLancana::where('periode_id',$periode->periode_id)->delete();
-        // app('App\Http\Controllers\SatyaLancana?')->hapus();
-
         $periode->delete();
         return response()->json($periode);
     }

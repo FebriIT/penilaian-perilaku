@@ -16,20 +16,7 @@ class AuthController extends Controller
     }
     public function proses_login(Request $request)
     {
-        //proses check user from API
-        // $response=Http::withBasicAuth('absen','absen2022')->get('https://presensi.jambikota.go.id/api/Pegawai/?ABSEN-API-KEY=pkap')->json();
-        // // dd($response);
-        // foreach($response as $data){
-        //     $data2=array(
-        //         'id'=>$data['userid'],
-        //         'username'=>$data['nipbaru'],
-        //         'name'=>$data['gldepan'].' '.$data['nama'].' '.$data['glblk'],
-        //         'password'=>bcrypt($data['nipbaru']),
-        //         'role'=>'user',
-        //         'account_verified'=>'1'
-        //     );
-        // }
-        // User::insert($data2);
+        
 
 
         if($request->remember===null){

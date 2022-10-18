@@ -43,9 +43,9 @@
                     <div class="card-body">
 
                         <h4 class="mt-0 header-title">Data User
-                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
+                            {{--  <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
                                 Tambah Data
-                            </button>
+                            </button>  --}}
                         </h4>
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">

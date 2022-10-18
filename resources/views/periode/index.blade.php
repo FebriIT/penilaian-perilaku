@@ -54,6 +54,7 @@
                                     <thead>
                                         <tr>
                                             <th>Judul</th>
+                                            <th>Max Penilai</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             <th>Status</th>
@@ -137,7 +138,8 @@
             <form class="needs-validation" id="form-tambah-edit" name="form-tambah-edit">
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
-                    <div class="form-group">
+                    
+                    <div class="form-group dNone" style="display: none">
                         <h6 class="text-muted fw-400">Judul</h6>
                         <div>
                             <div class="input-group">
@@ -146,15 +148,24 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
+                        <h6 class="text-muted fw-400">Max Penilai</h6>
+                        <div>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="max_penilai" id="max_penilai" placeholder="Jumlah Penilai" required>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group dNone" style="display: none">
                         <h6 class="text-muted fw-400 mt-3">Date Start</h6>
-                        <input type="date" class="form-control" name="start" id="start">
+                        <input type="date" class="form-control" name="start" id="start" required>
 
                     </div>
-                    <div class="form-group">
+                    <div class="form-group dNone" style="display: none">
                         <h6 class="text-muted fw-400 mt-3">Date End</h6>
-                        <input type="date" class="form-control" name="end" id="end">
+                        <input type="date" class="form-control" name="end" id="end" required>
                     </div>
                     <div class="form-group">
                         <h6 class="text-muted fw-400">Status</h6>
@@ -234,6 +245,10 @@
                     name: 'title'
                 },
                 {
+                    data: 'max_penilai',
+                    name: 'max_penilai'
+                },
+                {
                     data: 'start',
                     name: 'start'
                 },
@@ -252,7 +267,7 @@
 
             ],
             order: [
-                [1, "desc"]
+                [3, "asc"]
             ]
 
         });
@@ -265,6 +280,7 @@
             $('#id').val(''); //valuenya menjadi kosong
             $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
             $('#modal-judul').html("Tambah Jadwal Usulan"); //valuenya tambah pegawai baru
+            $('.dNone').show();
             $('#tambah-edit-modal').modal('show');
             // console.log('sukses');
         });
@@ -333,10 +349,12 @@
             $.get('periode/' + data_id + '/edit', function (data) {
                 $('#modal-judul').html("Edit Periode");
                 $('#tombol-simpan').val("edit-post");
+                $('.dNone').hide();
                 $('#tambah-edit-modal').modal('show');
 
                 $('#id').val(data.id);
                 $('#title').val(data.title);
+                $('#max_penilai').val(data.max_penilai);
                 $('#start').val(data.start);
                 $('#end').val(data.end);
                 $('#statuss').val(data.status).change();

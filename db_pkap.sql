@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2022 pada 14.34
+-- Waktu pembuatan: 12 Jul 2022 pada 10.52
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -117,7 +117,8 @@ CREATE TABLE `periode` (
 --
 
 INSERT INTO `periode` (`id`, `title`, `start`, `end`, `status`, `created_at`, `updated_at`) VALUES
-(16, 'dwadaw', '2022-07-15', '2022-07-23', 1, '2022-07-01 01:25:54', '2022-06-30 18:25:54');
+(19, '122', '2022-07-05', '2022-07-15', 1, '2022-07-12 06:23:39', '2022-07-12 01:07:05'),
+(20, 'wawda', '2022-07-08', '2022-07-21', 0, '2022-07-12 07:33:29', '2022-07-12 01:07:05');
 
 -- --------------------------------------------------------
 
@@ -178,11 +179,13 @@ CREATE TABLE `satyalancana` (
 --
 
 INSERT INTO `satyalancana` (`id`, `opd_id`, `nip`, `gl_dpn`, `nama`, `gl_blk`, `tempat_lahir`, `tgl_lahir`, `jk`, `pendidikan_terakhir`, `no_sk_cpns`, `tmt_cpns`, `gol_ruang`, `tmt_gol_ruang`, `jabatan`, `tmt_jabatan`, `status_verifikasi`, `keterangan`, `status_verifikasi_prof`, `filesatya`, `periode_id`, `masakerja`, `skls`, `user_input`, `user_edit`, `created_at`, `updated_at`) VALUES
-(1, 10, '1231232', 'dwad', 'dwadawdwadwa', 'dwadawd', 'adwa', '2022-04-14', 'Laki-Laki', 'DIPLOMA IV', '23232', '2022-04-21', 'Juru Tingkat I (I/d)', '2022-04-07', 'dwadwawa', '2022-03-30', '1', NULL, NULL, 'dwadawdwadwa-1231232-Musdar, S.Pd.SD-197507012006042017-musdar.pdf-1648710714.pdf-1650203493.pdf', 3, 22, 'XX', 1, 1, '2022-04-17 13:51:33', '2022-04-17 06:51:33'),
-(2, 5, '21312312312', 'dw', '2131232321', NULL, 'Jambi', '2022-06-14', 'Laki-Laki', 'S2', '23123132', '2022-06-28', 'Pembina Utama Muda (IV/c)', '2022-06-28', 'dawdwa', '2022-06-14', '1', NULL, NULL, '2131232321-21312312312-adwada-21313112-Elseria Sirait, S.Pd-196704161992042001-elsa sirait.pdf-1648710046.pdf-1650126916.pdf-1655355288.pdf', 9, 20, 'XX', 1, 1, '2022-06-16 04:54:48', '2022-06-15 21:54:48'),
-(3, 4, '231321312', NULL, 'ferdq', NULL, 'jambi', '2222-02-22', 'Laki-Laki', 'S1', '12312', '2222-02-22', 'Pembina Utama Muda (IV/c)', '2222-02-22', 'wdaddw', '2022-06-29', '1', NULL, NULL, 'ferdq-231321312-SK Pensiun.pdf-1656315245.pdf', 9, 30, 'XXX', 1, 1, '2022-06-27 07:34:05', '2022-06-27 00:34:05'),
-(4, 5, '1949455614646', NULL, 'febri', NULL, 'Jambi', '2022-06-30', 'Laki-Laki', 'S2', '23123132', '2022-07-26', 'Pembina Utama Muda (IV/c)', '2022-07-25', 'wdadawa', '2022-07-04', '1', NULL, NULL, 'febri-1949455614646-6. Juni 2022.pdf-1656641254.pdf', 16, 20, 'XX', 1, 1, '2022-07-01 02:07:34', '2022-06-30 19:07:34'),
-(5, 9, '12312312', 'adwa', 'dwadawdwa', NULL, 'Gantiwarno', '2022-07-06', 'Perempuan', 'DIPLOMA III', '23123132', '2022-07-25', 'Pembina (IV/a)', '2022-07-24', 'wadwadwa', '2022-07-19', '1', NULL, NULL, 'dwadawdwa-12312312-6. Juni 2022.pdf-1656984280.pdf', 16, 33, 'XXX', 17114, 17114, '2022-07-05 01:24:40', '2022-07-04 18:24:40');
+(1, 10, '1231232', 'dwad', 'dwadawdwadwa', 'dwadawd', 'adwa', '2022-04-14', 'Laki-Laki', 'DIPLOMA IV', '23232', '2022-04-21', 'Juru Tingkat I (I/d)', '2022-04-07', 'dwadwawa', '2022-03-30', '2', NULL, NULL, 'dwadawdwadwa-1231232-Musdar, S.Pd.SD-197507012006042017-musdar.pdf-1648710714.pdf-1650203493.pdf', 3, 22, 'XX', 1, 1, '2022-04-17 13:51:33', '2022-07-11 21:00:31'),
+(2, 5, '21312312312', 'dw', '2131232321', NULL, 'Jambi', '2022-06-14', 'Laki-Laki', 'S2', '23123132', '2022-06-28', 'Pembina Utama Muda (IV/c)', '2022-06-28', 'dawdwa', '2022-06-14', '2', NULL, NULL, '2131232321-21312312312-adwada-21313112-Elseria Sirait, S.Pd-196704161992042001-elsa sirait.pdf-1648710046.pdf-1650126916.pdf-1655355288.pdf', 9, 20, 'XX', 1, 1, '2022-06-16 04:54:48', '2022-07-11 21:00:31'),
+(3, 4, '231321312', NULL, 'ferdq', NULL, 'jambi', '2222-02-22', 'Laki-Laki', 'S1', '12312', '2222-02-22', 'Pembina Utama Muda (IV/c)', '2222-02-22', 'wdaddw', '2022-06-29', '2', NULL, NULL, 'ferdq-231321312-SK Pensiun.pdf-1656315245.pdf', 9, 30, 'XXX', 1, 1, '2022-06-27 07:34:05', '2022-07-11 21:00:31'),
+(4, 5, '1949455614646', NULL, 'febri', NULL, 'Jambi', '2022-06-30', 'Laki-Laki', 'S2', '23123132', '2022-07-26', 'Pembina Utama Muda (IV/c)', '2022-07-25', 'wdadawa', '2022-07-04', '2', NULL, NULL, 'febri-1949455614646-6. Juni 2022.pdf-1656641254.pdf', 16, 20, 'XX', 1, 1, '2022-07-01 02:07:34', '2022-07-11 21:00:31'),
+(5, 9, '12312312', 'adwa', 'dwadawdwa', NULL, 'Gantiwarno', '2022-07-06', 'Perempuan', 'DIPLOMA III', '23123132', '2022-07-25', 'Pembina (IV/a)', '2022-07-24', 'wadwadwa', '2022-07-19', '1', NULL, NULL, 'dwadawdwa-12312312-6. Juni 2022.pdf-1656984280.pdf', 16, 33, 'XXX', 17114, 17114, '2022-07-05 01:24:40', '2022-07-04 18:24:40'),
+(6, 5, '1232132121', 'ddwa', 'dadwa', NULL, 'dawda', '2022-07-11', 'Laki-Laki', 'DIPLOMA IV', 'dwad2', '2022-07-29', 'Pembina Utama Madya (IV/d)', '2022-07-19', 'wadwada', '2022-07-27', '1', NULL, NULL, 'dadwa-1232132121-2021vol22no1_Paper4.pdf-1657607411.pdf', 19, 21, 'XX', 2, 2, '2022-07-12 06:30:11', '2022-07-11 23:30:11'),
+(7, 9, '212121', 'dwa', 'dwadwa', NULL, 'wadwad', '2022-07-04', 'Perempuan', 'S1', 'w2112', '2022-08-04', 'Pembina Utama Madya (IV/d)', '2022-07-17', 'dwadw', '2022-08-02', '1', NULL, NULL, 'dwadwa-212121-2021vol22no1_Paper4.pdf-1657607894.pdf', 19, 22, 'XX', 2, 2, '2022-07-12 06:38:14', '2022-07-11 23:38:14');
 
 -- --------------------------------------------------------
 
@@ -1029,13 +1032,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `opd`
 --
 ALTER TABLE `opd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -1047,13 +1050,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `satyalancana`
 --
 ALTER TABLE `satyalancana`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17476;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17477;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

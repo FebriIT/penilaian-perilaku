@@ -29,12 +29,7 @@
                 </ul>
             </li> --}}
             
-            <li>
-                <a href="/{{auth()->user()->role}}/satyalancana" class="waves-effect">
-                    <i class="mdi mdi-folder-multiple-outline"></i>
-                    <span> Satya Lancana </span>
-                </a>
-            </li>
+            
             @if (auth()->user()->role=='admin')
             <li>
                 <a href="/{{auth()->user()->role}}/datauser" class="waves-effect">

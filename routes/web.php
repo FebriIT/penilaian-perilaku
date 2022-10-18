@@ -30,22 +30,12 @@ Route::post('/proses_register', [AuthController::class, 'proses_register'])->nam
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/test',[ApiAbsensiController::class,'index']);
+Route::get('/create',[ApiAbsensiController::class,'create']);
 
 Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/datauser', [UserController::class, 'index']);
-
-    Route::get('satyalancana/export/', [SatyaLancanaController::class, 'export']);
-    Route::get('/satyalancana/download/{id}', [SatyaLancanaController::class,'getDownload']);
-    Route::get('/satyalancana/export/pdf', [SatyaLancanaController::class,'exportpdf']);
-    Route::get('/satyalancana', [SatyaLancanaController::class,'index'])->name('satya.admin');
-    Route::post('/satyalancana', [SatyaLancanaController::class,'store']);
-    Route::delete('/satyalancana/{id}', [SatyaLancanaController::class,'destroy']);
-    Route::delete('/satyalancana/deleteall', [SatyaLancanaController::class,'destroyall'])->name('destroyall');
-    Route::get('/satyalancana/{id}/edit', [SatyaLancanaController::class,'edit']);
-    Route::post('/satyalancana/update',[SatyaLancanaController::class,'update'])->name('satya.update');
-    
 
 
 
@@ -66,9 +56,6 @@ Route::prefix('user')->middleware('auth', 'role:user')->group(function () {
 
     // Route::get('/satyalancana',[SatyaLancanaController::class,'index'])->name('satyalancana.index');
 
-    Route::get('/satyalancana', [SatyaLancanaController::class,'index'])->name('satya.user');
-    Route::post('/satyalancana', [SatyaLancanaController::class,'store']);
-    Route::delete('/satyalancana/{id}', [SatyaLancanaController::class,'destroy']);
 
 
     // Route::resource('satyalancana',SatyaLancanaController::class);
