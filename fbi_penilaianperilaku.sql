@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jul 2022 pada 10.52
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Generation Time: Oct 18, 2022 at 05:10 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_pkap`
+-- Database: `fbi_penilaianperilaku`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -40,7 +40,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -50,7 +50,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -62,7 +62,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `opd`
+-- Table structure for table `opd`
 --
 
 CREATE TABLE `opd` (
@@ -73,7 +73,7 @@ CREATE TABLE `opd` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `opd`
+-- Dumping data for table `opd`
 --
 
 INSERT INTO `opd` (`id`, `namaopd`, `created_at`, `updated_at`) VALUES
@@ -87,7 +87,7 @@ INSERT INTO `opd` (`id`, `namaopd`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -99,12 +99,14 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `periode`
+-- Table structure for table `periode`
 --
 
 CREATE TABLE `periode` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `nip` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `max_penilai` int(11) NOT NULL,
   `start` date DEFAULT NULL,
   `end` date DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
@@ -113,17 +115,16 @@ CREATE TABLE `periode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `periode`
+-- Dumping data for table `periode`
 --
 
-INSERT INTO `periode` (`id`, `title`, `start`, `end`, `status`, `created_at`, `updated_at`) VALUES
-(19, '122', '2022-07-05', '2022-07-15', 1, '2022-07-12 06:23:39', '2022-07-12 01:07:05'),
-(20, 'wawda', '2022-07-08', '2022-07-21', 0, '2022-07-12 07:33:29', '2022-07-12 01:07:05');
+INSERT INTO `periode` (`id`, `nip`, `nama`, `max_penilai`, `start`, `end`, `status`, `created_at`, `updated_at`) VALUES
+(27, '121211', 'dawdaw', 22, '2022-10-18', '2022-10-19', 1, '2022-10-18 14:10:57', '2022-10-18 07:10:57');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -141,56 +142,20 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `satyalancana`
+-- Table structure for table `pertanyaan`
 --
 
-CREATE TABLE `satyalancana` (
+CREATE TABLE `pertanyaan` (
   `id` int(11) NOT NULL,
-  `opd_id` int(11) NOT NULL,
-  `nip` varchar(20) NOT NULL,
-  `gl_dpn` varchar(50) DEFAULT NULL,
-  `nama` varchar(255) NOT NULL,
-  `gl_blk` varchar(50) DEFAULT NULL,
-  `tempat_lahir` varchar(200) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `jk` varchar(15) NOT NULL,
-  `pendidikan_terakhir` varchar(20) NOT NULL,
-  `no_sk_cpns` varchar(200) NOT NULL,
-  `tmt_cpns` date NOT NULL,
-  `gol_ruang` varchar(50) NOT NULL,
-  `tmt_gol_ruang` date NOT NULL,
-  `jabatan` text NOT NULL,
-  `tmt_jabatan` date NOT NULL,
-  `status_verifikasi` varchar(20) NOT NULL,
-  `keterangan` text DEFAULT NULL,
-  `status_verifikasi_prof` varchar(100) DEFAULT NULL,
-  `filesatya` text NOT NULL,
-  `periode_id` int(11) NOT NULL,
-  `masakerja` int(11) NOT NULL,
-  `skls` varchar(15) NOT NULL,
-  `user_input` int(11) NOT NULL,
-  `user_edit` int(11) NOT NULL,
+  `text_pertanyaan` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data untuk tabel `satyalancana`
---
-
-INSERT INTO `satyalancana` (`id`, `opd_id`, `nip`, `gl_dpn`, `nama`, `gl_blk`, `tempat_lahir`, `tgl_lahir`, `jk`, `pendidikan_terakhir`, `no_sk_cpns`, `tmt_cpns`, `gol_ruang`, `tmt_gol_ruang`, `jabatan`, `tmt_jabatan`, `status_verifikasi`, `keterangan`, `status_verifikasi_prof`, `filesatya`, `periode_id`, `masakerja`, `skls`, `user_input`, `user_edit`, `created_at`, `updated_at`) VALUES
-(1, 10, '1231232', 'dwad', 'dwadawdwadwa', 'dwadawd', 'adwa', '2022-04-14', 'Laki-Laki', 'DIPLOMA IV', '23232', '2022-04-21', 'Juru Tingkat I (I/d)', '2022-04-07', 'dwadwawa', '2022-03-30', '2', NULL, NULL, 'dwadawdwadwa-1231232-Musdar, S.Pd.SD-197507012006042017-musdar.pdf-1648710714.pdf-1650203493.pdf', 3, 22, 'XX', 1, 1, '2022-04-17 13:51:33', '2022-07-11 21:00:31'),
-(2, 5, '21312312312', 'dw', '2131232321', NULL, 'Jambi', '2022-06-14', 'Laki-Laki', 'S2', '23123132', '2022-06-28', 'Pembina Utama Muda (IV/c)', '2022-06-28', 'dawdwa', '2022-06-14', '2', NULL, NULL, '2131232321-21312312312-adwada-21313112-Elseria Sirait, S.Pd-196704161992042001-elsa sirait.pdf-1648710046.pdf-1650126916.pdf-1655355288.pdf', 9, 20, 'XX', 1, 1, '2022-06-16 04:54:48', '2022-07-11 21:00:31'),
-(3, 4, '231321312', NULL, 'ferdq', NULL, 'jambi', '2222-02-22', 'Laki-Laki', 'S1', '12312', '2222-02-22', 'Pembina Utama Muda (IV/c)', '2222-02-22', 'wdaddw', '2022-06-29', '2', NULL, NULL, 'ferdq-231321312-SK Pensiun.pdf-1656315245.pdf', 9, 30, 'XXX', 1, 1, '2022-06-27 07:34:05', '2022-07-11 21:00:31'),
-(4, 5, '1949455614646', NULL, 'febri', NULL, 'Jambi', '2022-06-30', 'Laki-Laki', 'S2', '23123132', '2022-07-26', 'Pembina Utama Muda (IV/c)', '2022-07-25', 'wdadawa', '2022-07-04', '2', NULL, NULL, 'febri-1949455614646-6. Juni 2022.pdf-1656641254.pdf', 16, 20, 'XX', 1, 1, '2022-07-01 02:07:34', '2022-07-11 21:00:31'),
-(5, 9, '12312312', 'adwa', 'dwadawdwa', NULL, 'Gantiwarno', '2022-07-06', 'Perempuan', 'DIPLOMA III', '23123132', '2022-07-25', 'Pembina (IV/a)', '2022-07-24', 'wadwadwa', '2022-07-19', '1', NULL, NULL, 'dwadawdwa-12312312-6. Juni 2022.pdf-1656984280.pdf', 16, 33, 'XXX', 17114, 17114, '2022-07-05 01:24:40', '2022-07-04 18:24:40'),
-(6, 5, '1232132121', 'ddwa', 'dadwa', NULL, 'dawda', '2022-07-11', 'Laki-Laki', 'DIPLOMA IV', 'dwad2', '2022-07-29', 'Pembina Utama Madya (IV/d)', '2022-07-19', 'wadwada', '2022-07-27', '1', NULL, NULL, 'dadwa-1232132121-2021vol22no1_Paper4.pdf-1657607411.pdf', 19, 21, 'XX', 2, 2, '2022-07-12 06:30:11', '2022-07-11 23:30:11'),
-(7, 9, '212121', 'dwa', 'dwadwa', NULL, 'wadwad', '2022-07-04', 'Perempuan', 'S1', 'w2112', '2022-08-04', 'Pembina Utama Madya (IV/d)', '2022-07-17', 'dwadw', '2022-08-02', '1', NULL, NULL, 'dwadwa-212121-2021vol22no1_Paper4.pdf-1657607894.pdf', 19, 22, 'XX', 2, 2, '2022-07-12 06:38:14', '2022-07-11 23:38:14');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -209,7 +174,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `role`, `account_verified`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `created_at`, `updated_at`) VALUES
@@ -961,38 +926,38 @@ INSERT INTO `users` (`id`, `username`, `name`, `role`, `account_verified`, `emai
 --
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `opd`
+-- Indexes for table `opd`
 --
 ALTER TABLE `opd`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `periode`
+-- Indexes for table `periode`
 --
 ALTER TABLE `periode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -1000,60 +965,60 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `satyalancana`
+-- Indexes for table `pertanyaan`
 --
-ALTER TABLE `satyalancana`
+ALTER TABLE `pertanyaan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `opd`
+-- AUTO_INCREMENT for table `opd`
 --
 ALTER TABLE `opd`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `periode`
+-- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `satyalancana`
+-- AUTO_INCREMENT for table `pertanyaan`
 --
-ALTER TABLE `satyalancana`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `pertanyaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17477;
