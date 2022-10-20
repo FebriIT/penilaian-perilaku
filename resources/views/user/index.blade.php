@@ -219,23 +219,22 @@
         var table = $('#datatable1').DataTable({
             processing: true,
             serverSide: true,
+            deferRender: true,
             ajax: "{{ url('/'.auth()->user()->role.'/datauser') }}",
             columns: [
 
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: 'nipbaru',
+                    name: 'nipbaru'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'nama',
+                    name: 'nama'
                 },
                 {
-                    data: 'role',
-                    name: 'role'
+                    data: 'nama',
+                    name: 'nama'
                 },
-                
-
             ],
             order: [
                 [1, "asc"]
