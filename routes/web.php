@@ -23,8 +23,11 @@ use App\Models\SatyaLancana;
 */
 
 
+Route::get('/',function(){
+    return view('awal');
+});
 
-Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
 Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
@@ -38,16 +41,18 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/datauser', [UserController::class, 'index']);
 
-
-
     // Route::resource('/satyalancana',SatyaLancanaController::class);
     Route::resource('opd', OpdController::class)->except(['show','update']);
     Route::get('/penilaian', [PeriodeController::class,'index']);
+    Route::get('/penilaian/{id}/open', [PeriodeController::class,'open']);
     Route::post('/periode', [PeriodeController::class,'store'])->name('post.periode');
     Route::delete('/periode/{id}', [PeriodeController::class,'destroy']);
     Route::get('/periode/{id}/edit', [PeriodeController::class,'edit']);
 
     Route::get('/pertanyaan', [PertanyaanController::class,'index']);
+    Route::post('/pertanyaan', [PertanyaanController::class,'store'])->name('post.pertanyaan');
+    Route::delete('/pertanyaan/{id}', [PertanyaanController::class,'destroy']);
+    Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class,'edit']);
     
 
     // Route::

@@ -55,6 +55,7 @@
                                         <tr>
                                             <th>NIP</th>
                                             <th>Nama</th>
+                                            <th>OPD</th>
                                             <th>Max Penilai</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -159,6 +160,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <h6 class="text-muted fw-400">OPD</h6>
+                        <select class=" form-control mb-3 custom-select" name="opd_id" id="opd_id" style="width: 100%; height:36px;">
+                            <option value="">-pilih-</option>
+                            @foreach ($dataopd as $item)
+                            <option value="{{ $item->id }}">{{ $item->namaopd }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <h6 class="text-muted fw-400">Max Penilai</h6>
                         <div>
                             <div class="input-group">
@@ -259,6 +269,10 @@
                     name: 'nama'
                 },
                 {
+                    data: 'opd',
+                    name: 'opd'
+                },
+                {
                     data: 'max_penilai',
                     name: 'max_penilai'
                 },
@@ -293,7 +307,7 @@
         $('#tombol-tambah').click(function () {
             $('#id').val(''); //valuenya menjadi kosong
             $('#form-tambah-edit').trigger("reset"); //mereset semua input dll didalamnya
-            $('#modal-judul').html("Tambah Jadwal Usulan"); //valuenya tambah pegawai baru
+            $('#modal-judul').html("Tambah Data Penilai"); //valuenya tambah pegawai baru
             $('.dNone').show();
             $('#tambah-edit-modal').modal('show');
             // console.log('sukses');
