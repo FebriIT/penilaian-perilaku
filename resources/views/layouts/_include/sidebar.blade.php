@@ -37,12 +37,12 @@
                     <span> Data User </span>
                 </a>
             </li>
-            <li>
+            {{--  <li>
                 <a href="/{{ auth()->user()->role }}/opd" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
                     <span> OPD </span>
                 </a>
-            </li>
+            </li>  --}}
             <li>
                 <a href="/{{ auth()->user()->role }}/pertanyaan" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
@@ -57,9 +57,9 @@
             </li>
             @endif
             <li>
-                <a href="{{ route('logout') }}" class="waves-effect">
-                    <i class="mdi mdi-logout"></i>
-                    <span> Logout </span>
+                <a href="/admin/pengaturan" class="waves-effect">
+                    <i class="mdi mdi-settings"></i>
+                    <span> Pengaturan </span>
                 </a>
             </li>
 

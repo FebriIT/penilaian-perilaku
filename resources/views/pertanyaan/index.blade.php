@@ -155,9 +155,13 @@
             columns: [
 
                 {
-                    data: 'id',
-                    name: 'id'
+                    data: null,
+                    sortable: false,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1
+                    },
                 },
+                
                 {
                     data: 'text_pertanyaan',
                     name: 'text_pertanyaan'

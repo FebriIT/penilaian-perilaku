@@ -37,7 +37,9 @@
                     <div class="p-3">
                         <div class="form-group text-center row m-t-20">
                             <div class="col-12">
-                                <a href="/mulaimenilai" class="btn btn-primary btn-block waves-effect waves-light" type="submit">Mulai Menilai</a>
+                                @if($data->status==1)
+                                <a href="/pilihopd" class="btn btn-primary btn-block waves-effect waves-light" type="submit">Mulai Menilai</a>
+                                @endif
                                 <a href="/login" class="btn btn-secondary btn-block waves-effect waves-light" type="submit">Login Operator</a>
                             </div>
                         </div>

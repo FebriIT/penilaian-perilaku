@@ -103,7 +103,7 @@
                     <div class="dropdown-item noti-title">
                         <h5>{{ auth()->user()->name }}</h5>
                     </div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>
+                    <a class="dropdown-item" href="/admin/profile"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>
                         Profile</a>
 
                     <div class="dropdown-divider"></div>

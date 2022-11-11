@@ -5,9 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>PKAP - BKPSDMD Kota Jambi
-
-    </title>
+    <title>PKAP - BKPSDMD Kota Jambi</title>
     <meta content="Admin Dashboard" name="description" />
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,7 +77,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2022 IT PKAP-BKPSDMD KOTA JAMBI.
+                © 2022 IT PKAP-BKPSDMD KOTA JAMBI | .
             </footer>
 
         </div>

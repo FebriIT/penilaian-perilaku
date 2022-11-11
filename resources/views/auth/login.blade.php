@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Login - PKAP.BKPSDMD Kota Jambi</title>
+        <title>Penilaian Perilaku Pegawai - PKAP BKPSDMD Kota Jambi</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,14 +60,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            {{--  <div class="form-group row">
                                 <div class="col-12">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ $is_remember }}>
                                         <label class="custom-control-label" for="remember">Remember me</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  --}}
 
                             <div class="form-group text-center row m-t-20">
                                 <div class="col-12">
@@ -75,14 +75,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group m-t-10 mb-0 row">
+                            {{--  <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-sm-7 m-t-20">
                                     <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> <small>Forgot your password ?</small></a>
                                 </div>
                                 <div class="col-sm-5 m-t-20">
                                     <a href="/register" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></a>
                                 </div>
-                            </div>
+                            </div>  --}}
                         </form>
                     </div>
 
