@@ -53,10 +53,8 @@
                                     style="font-size: 13px" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Username</th>
+                                            <th>NIP</th>
                                             <th>Name</th>
-                                            <th>Role</th>
-                                            {{--  <th>Action</th>  --}}
                                         </tr>
                                     </thead>
                                     {{-- <tbody>
@@ -231,10 +229,7 @@
                     data: 'nama',
                     name: 'nama'
                 },
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
+                
             ],
             order: [
                 [1, "asc"]

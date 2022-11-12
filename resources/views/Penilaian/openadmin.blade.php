@@ -63,7 +63,7 @@
                                             <th>Sejawat</th>
                                             <th>Bawahan</th>
                                             <th>Hasil</th>
-                                            <th>Akssi</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
