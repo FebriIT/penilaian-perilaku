@@ -43,7 +43,7 @@ class MulaiMenilaiController extends Controller
                 ->addIndexColumn()
                 ->make(true);
             }
-            return view('penilaian.pilihopd',compact('data'));
+            return view('Penilaian.pilihopd',compact('data'));
         }else{
             return back();
         }
@@ -72,7 +72,7 @@ class MulaiMenilaiController extends Controller
         
         
         // dd($dataid);
-        return view('penilaian.pilihpegawai',compact('data','ids'));
+        return view('Penilaian.pilihpegawai',compact('data','ids'));
     }
     public function mulaimenilai($nip)
     {
