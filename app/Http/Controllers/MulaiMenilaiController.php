@@ -59,8 +59,11 @@ class MulaiMenilaiController extends Controller
             ->addColumn('action',function($f){
                 $button='<a href="/mulaimenilai/'.encrypt($f->nipbaru).'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
                 return $button;
+            })->addColumn('nama',function($f){
+                $nama=$f->gldepan.' '.$f->nama.' '.$f->glblk;
+                return $nama;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action','nama'])
             
             ->addIndexColumn()
             ->make(true);

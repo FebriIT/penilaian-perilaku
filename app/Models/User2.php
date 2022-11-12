@@ -9,7 +9,6 @@ class User2 extends Model
 {
     use HasFactory;
 
-    protected $connection="mysql2";
 
     protected $table='pegawai';
 }
