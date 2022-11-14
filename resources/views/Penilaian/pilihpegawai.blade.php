@@ -40,7 +40,7 @@
                                 <a href="/pilihopd" class="btn btn-primary btn-sm">
                                     <span class="ti-arrow-circle-left"></span>
                                 </a>
-                                Pilih pegawai yang inggin dinilai
+                                Pilih pegawai yang ingin dinilai
 
                             </h5>
                             
@@ -55,7 +55,7 @@
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Nama</th>
-                                                        <th>Jabatan</th>
+                                                        {{--  <th>Jabatan</th>  --}}
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -147,10 +147,7 @@
                         data: 'nama',
                         name: 'nama'
                     },
-                    {
-                        data: 'njabatan',
-                        name: 'njabatan'
-                    },
+                    
                     
                     {
                         data: 'action',
