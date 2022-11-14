@@ -279,6 +279,9 @@
                                 alert('Anda sudah menilai data ini');
                                 $('#tombol-carinip').html('Cari NIP');
 
+                            }else if(data==2){
+                                alert('Data penilaian dan data yang dinilai tidak boleh sama');
+                                $('#tombol-carinip').html('Cari NIP');
                             }
                             else{
                                 
