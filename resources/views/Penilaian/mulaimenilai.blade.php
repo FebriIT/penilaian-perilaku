@@ -121,19 +121,19 @@
                                                                 <div class="form-check-inline my-1">
                                                                     <div class="custom-control custom-radio">
                                                                         <input type="radio" id="pertanyaan1[{{ $data->nipbaru }}]-[{{ $row->id }}]" value="{{ '1'.'#'.$row->id }}" name="pilih[{{ $row->id }}]" class="custom-control-input">
-                                                                        <label class="custom-control-label" for="pertanyaan1[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Kurang Ekspetasi</label>
+                                                                        <label class="custom-control-label" for="pertanyaan1[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Dibawah Ekspektasi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-check-inline my-1">
                                                                     <div class="custom-control custom-radio">
                                                                         <input type="radio" id="pertanyaan2[{{ $data->nipbaru }}]-[{{ $row->id }}]" value="{{ '2'.'#'.$row->id }}" name="pilih[{{ $row->id }}]" class="custom-control-input">
-                                                                        <label class="custom-control-label" for="pertanyaan2[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Sesuai Ekspetasi</label>
+                                                                        <label class="custom-control-label" for="pertanyaan2[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Sesuai Ekspektasi</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-check-inline my-1">
                                                                     <div class="custom-control custom-radio">
                                                                         <input type="radio" id="pertanyaan3[{{ $data->nipbaru }}]-[{{ $row->id }}]" value="{{ '3'.'#'.$row->id }}" name="pilih[{{ $row->id }}]" class="custom-control-input">
-                                                                        <label class="custom-control-label" for="pertanyaan3[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Melebihi Ekspetasi</label>
+                                                                        <label class="custom-control-label" for="pertanyaan3[{{ $data->nipbaru  }}]-[{{ $row->id }}]">Diatas Ekspektasi</label>
                                                                     </div>
                                                                 </div>
                                                             </div>

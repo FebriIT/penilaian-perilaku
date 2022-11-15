@@ -50,9 +50,7 @@ class MulaiMenilaiController extends Controller
     }
     public function open($id,Request $request)
     {
-        // dd($id);
-        // $dataid=decrypt($id);
-        
+    
         $data=User2::where('kunker','=',$id)->get();
         if($request->ajax()){
             return datatables()->of($data)
@@ -230,8 +228,5 @@ class MulaiMenilaiController extends Controller
             // dd('Anda belum mengisi penilaiaan');
             return redirect()->back()->with('gagal','Gagal Menilai, Anda belum mengisi form penilaiaan');
         }
-
-
-        // dd($request->all());
     }
 }

@@ -16,28 +16,32 @@ class PenilaianController extends Controller
     public function index(Request $request)
     {
         
-        $data=JawabanYangDinilai::all();
-        // $data=Opd::orderBy('id','asc')->get();
-        // dd($data);
+        $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
+
         if($request->ajax()){
             return datatables()->of($data)
             ->addColumn('action',function($f){
                 
-                $button='<a href="/admin/penilaian/'.$f->kunker.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
+                $button='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
                 
-
                 return $button;
             })
-            ->rawColumns(['action'])
-            
+            ->addColumn('jumlahygdinilai',function($f){
+                $jumlahygdinilai=JawabanYangDinilai::where('id_unitkerja',$f->id)->count();
+                return $jumlahygdinilai;
+            })
+            ->rawColumns(['action','jumlahygdinilai'])
             ->addIndexColumn()
             ->make(true);
         }
+        
         return view('penilaian.indexadmin',compact('data'));
     }
-    public function indexx()
+
+ 
+    public function indexx($id)
     {
-        $data=JawabanYangDinilai::all();
+        $data=JawabanYangDinilai::where('id_unitkerja',$id)->get();
         return view('Penilaian.openadmin',compact('data'));
     }
     public function datapenilai($dnip)

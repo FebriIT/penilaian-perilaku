@@ -77,7 +77,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2022 IT PKAP-BKPSDMD KOTA JAMBI | .
+                © 2022 IT PKAP-BKPSDMD KOTA JAMBI | Bug Report 085266911477.
             </footer>
 
         </div>

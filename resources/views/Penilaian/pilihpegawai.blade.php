@@ -156,9 +156,8 @@
                     
                     
                 ],
-                order: [
-                    [0, "asc"]
-                ]
+
+                order: [[1, 'desc']],
     
             });
         </script>

@@ -42,10 +42,8 @@
                 <div class="card m-b-30">
                     <div class="card-body">
 
-                        <h4 class="mt-0 header-title">Penilaian Perilaku Pegawai
-                            <button type="button" class="btn btn-primary mb-2  float-right btn-sm" id="tombol-tambah">
-                                Tambah Data
-                            </button>
+                        <h4 class="mt-0 header-title">Pilih OPD
+                            
                         </h4>
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">
@@ -53,26 +51,15 @@
                                     style="font-size: 13px" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>No</th> 
                                             <th>Unit Kerja</th>
-                                            
+                                            <th>Jumlah yang dinilai</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key=>$row)
-                                        @php
-                                            $unitkerja=App\Models\UnitKerja::where('id',$row->id_unitkerja)->first()->nunker;
-                                        @endphp
-                                        <tr>
-                                            <td>{{ ++$key }}</td>
-                                            <td>{{ $unitkerja }}</td>
-                                            <td><a href="/admin/penilaian" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a></td>
-
-                                        </tr>
-                                        @endforeach
+                                        
                                     </tbody>
-                                  
                                 </table>
                             </div>
                         </div>
@@ -122,7 +109,7 @@
 
     $(document).ready(function () {
 
-        var table = $('#datatablew1').DataTable({
+        var table = $('#datatable1').DataTable({
             processing: true,
             serverSide: true,
             "ordering": false,
@@ -137,10 +124,14 @@
                         return meta.row + meta.settings._iDisplayStart + 1
                     },
                 },
-                
+
                 {
                     data: 'nunker',
                     name: 'nunker'
+                },
+                {
+                    data: 'jumlahygdinilai',
+                    name: 'jumlahygdinilai'
                 },
                 {
                     data: 'action',

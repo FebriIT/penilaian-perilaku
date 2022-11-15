@@ -58,9 +58,10 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
     // Route::resource('/satyalancana',SatyaLancanaController::class);
     Route::resource('opd', OpdController::class)->except(['show','update']);
-    Route::get('/penilaian', [PenilaianController::class,'indexx']);
+    Route::get('/penilaian', [PenilaianController::class,'index']);
+    Route::get('/penilaian/{id}',[PenilaianController::class,'indexx']);
     Route::get('/penilaian/{id}/hapus', [PenilaianController::class,'hapus']);
-    Route::get('/penilaian/{id}', [PenilaianController::class,'datapenilai']);
+    Route::get('/penilaian/{id}/detail', [PenilaianController::class,'datapenilai']);
     Route::get('/penilaian/pertanyaan/{nippenilai}/{nipygdinilai}', [PenilaianController::class,'datapertanyaan']);
 
     // Route::get('/penilaian/{id}/open', [PeriodeController::class,'openn']);

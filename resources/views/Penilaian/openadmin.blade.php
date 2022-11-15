@@ -83,7 +83,7 @@
                                             <td>{{ $row->bawahan }}</td>
                                             <td>{{ $row->hasil }}</td>
                                             <td>
-                                                <a href="/admin/penilaian/{{ encrypt($row->nip_ygdinilai) }}" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>
+                                                <a href="/admin/penilaian/{{ encrypt($row->nip_ygdinilai) }}/detail" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>
                                                 <a href="/admin/penilaian/{{ encrypt($row->nip_ygdinilai) }}/hapus" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin inggin menghapus data ini?')" style="float: none; margin: 5px;"><span class="ti-trash"></span></a>
                                                 
                                             </td>
