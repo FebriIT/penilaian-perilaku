@@ -35,7 +35,7 @@ class PenilaianController extends Controller
             ->make(true);
         }
         
-        return view('penilaian.indexadmin',compact('data'));
+        return view('Penilaian.indexadmin',compact('data'));
     }
 
  
