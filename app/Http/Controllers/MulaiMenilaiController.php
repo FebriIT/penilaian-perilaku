@@ -112,7 +112,7 @@ class MulaiMenilaiController extends Controller
         // dd(count($pilih)==21 $pilih);
         if($pilih){
             if(count($pilih)==21){
-                dd('true');
+                // dd('true');
                 foreach($pilih as $key=>$value){
                 
                     $jwb=new JawabanPertanyaan;
