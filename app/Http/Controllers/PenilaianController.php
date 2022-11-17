@@ -10,6 +10,7 @@ use App\Models\UnitKerja;
 use App\Models\User;
 use App\Models\User2;
 use Illuminate\Http\Request;
+use PhpOption\None;
 
 class PenilaianController extends Controller
 {
@@ -22,20 +23,63 @@ class PenilaianController extends Controller
             return datatables()->of($data)
             ->addColumn('action',function($f){
                 
-                $button='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
-                
+                if($f->fstatus==1){
+                    $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btndanger tabledit-edit-button btn btn-sm btn-danger" style="float: none; margin: 5px;"><span class="ti-close"></span></a>';
+                    
+                    
+                }else if($f->fstatus==0){
+                    $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btnsuccess tabledit-edit-button btn btn-sm btn-success" style="float: none; margin: 5px;"><span class="ti-check"></span></a>';
+                    
+                }
+                $button.='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
+
                 return $button;
             })
             ->addColumn('jumlahygdinilai',function($f){
                 $jumlahygdinilai=JawabanYangDinilai::where('id_unitkerja',$f->id)->count();
                 return $jumlahygdinilai;
             })
-            ->rawColumns(['action','jumlahygdinilai'])
+            ->addColumn('fstatus',function($f){
+                if($f->fstatus==1){
+                    $fstatus='<i><span class="badge badge-pill badge-primary">Active</span> </i>';
+                }elseif($f->fstatus==0){
+                    $fstatus='<i><span class="badge badge-pill badge-primary">Not Active</span></i>';
+
+                }
+                return $fstatus;
+            })
+            
+            ->rawColumns(['action','jumlahygdinilai','fstatus'])
             ->addIndexColumn()
             ->make(true);
         }
         
         return view('Penilaian.indexadmin',compact('data'));
+    }
+
+    public function updatestatus(Request $request)
+    {
+        
+        $data=UnitKerja::find($request->id);
+        if($data->fstatus==1){
+            $data->update([
+                'fstatus'=>0,
+            ]);
+            // dd('ok');
+            
+            $message=0;
+        }else if($data->fstatus==0){
+            $data->update([
+                'fstatus'=>1,
+            ]);
+            $message=1;
+
+        }else{
+            $message=2;
+        }
+        
+        // dd($data->nunker);
+        return response()->json($message);
     }
 
  

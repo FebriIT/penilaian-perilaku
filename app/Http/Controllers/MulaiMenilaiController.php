@@ -23,13 +23,10 @@ class MulaiMenilaiController extends Controller
 
         
 
-            $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
-            // $data=Opd::orderBy('id','asc')->get();
-            // dd($request->ajax());
-            
-            // dd($data);
+            $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->where('fstatus','=',1)->orderBy('nunker','asc')->get();
+
             if($request->ajax()){
-                // dd('ok');
+                // dd('ok');    
                 return datatables()->of($data)
                 ->addColumn('action',function($f){
                     

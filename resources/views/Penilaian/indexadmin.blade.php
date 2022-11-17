@@ -54,6 +54,7 @@
                                             <th>No</th> 
                                             <th>Unit Kerja</th>
                                             <th>Jumlah yang dinilai</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -108,11 +109,16 @@
 
 
     $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
 
         var table = $('#datatable1').DataTable({
             processing: true,
             serverSide: true,
-            "ordering": false,
             deferRender: true,
             ajax: "{{ url('/admin/penilaian') }}",
             columns: [
@@ -134,6 +140,10 @@
                     name: 'jumlahygdinilai'
                 },
                 {
+                    data: 'fstatus',
+                    name: 'fstatus'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },
@@ -146,7 +156,35 @@
 
         });
 
-
+        $('body').on('click','#updatestatus',function(){
+            var dataid=$(this).data('id');
+            
+            $.ajax({
+                type: 'get',
+                url: "{{ route('updatestatus') }}",
+                data: {
+                    'id': dataid
+                },
+                success: function (data) {
+                    //jika berhas
+                    if(data==1){
+                       
+                        alertify.success("Data Status Active");
+                    }else if(data==0){
+                        alertify.success("Data Status Not Active");
+                    }else{
+                        alertify.success("Data Status Gagal Diubah");
+                        
+                    }
+                    
+                },
+                error: function (data) {
+                    //jika error tampilkan error pada console
+                    console.log("Error:", data);
+                   
+                },
+            });
+        });
         
     });
 </script>
