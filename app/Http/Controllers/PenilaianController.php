@@ -17,7 +17,7 @@ class PenilaianController extends Controller
     public function index(Request $request)
     {
         
-        $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
+        $data=UnitKerja::   where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
 
         if($request->ajax()){
             return datatables()->of($data)

@@ -74,8 +74,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>NIP penilai</th>
-                                            <th>NIP yang dinilai</th>
+                                            <th>Nama penilai</th>
                                             <th>Tingkat Yang Dinilai</th>
                                             <th>Hasil</th>
                                             <th>Aksi</th>
@@ -86,8 +85,11 @@
                                             
                                         <tr>
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $row->nip_penilai }}</td>
-                                            <td>{{ $row->nip_ygdinilai }}</td>
+                                            @php
+                                                $nama_penilai=App\Models\User2::where('nipbaru',$row->nip_penilai)->first()->nama;
+                                                $nama_ygdinilai=App\Models\User2::where('nipbaru',$row->nip_ygdinilai)->first()->nama;
+                                            @endphp
+                                            <td>{{ $nama_penilai }} <br> NIP.{{ $row->nip_penilai }}</td>
                                             @if($row->tydinilai==1)
                                             <td>Bawahan</td>
                                             @elseif($row->tydinilai==2)

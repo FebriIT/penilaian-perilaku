@@ -56,7 +56,6 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>NIP</th>
                                             <th>Nama</th>
                                             <th>Unit Kerja</th>
                                             <th>Atasan</th>
@@ -71,12 +70,11 @@
                                             
                                         <tr>
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $row->nip_ygdinilai }}</td>
                                             @php
                                                 $unitkerja=App\Models\UnitKerja::where('id',$row->id_unitkerja)->first()->nunker;
                                                 $nama=App\Models\User2::where('nipbaru',$row->nip_ygdinilai)->first()->nama;
                                             @endphp
-                                            <td>{{ $nama }}</td>
+                                            <td>{{ $nama }} <br> NIP.{{ $row->nip_ygdinilai }}</td>
                                             <td>{{ $unitkerja }}</td>
                                             <td>{{ $row->atasan }}</td>
                                             <td>{{ $row->sejawat }}</td>
