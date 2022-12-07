@@ -55,6 +55,7 @@
                                             <th>Unit Kerja</th>
                                             <th>Jumlah yang dinilai</th>
                                             <th>Status</th>
+                                            <th>Jumlah PNS</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -142,6 +143,10 @@
                 {
                     data: 'fstatus',
                     name: 'fstatus'
+                },
+                {
+                    data: 'jumlahpns',
+                    name: 'jumlahpns'
                 },
                 {
                     data: 'action',

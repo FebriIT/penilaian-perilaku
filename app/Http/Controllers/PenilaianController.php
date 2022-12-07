@@ -9,6 +9,7 @@ use App\Models\Pertanyaan;
 use App\Models\UnitKerja;
 use App\Models\User;
 use App\Models\User2;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use PhpOption\None;
 
@@ -16,8 +17,8 @@ class PenilaianController extends Controller
 {
     public function index(Request $request)
     {
-        
-        $data=UnitKerja::   where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
+
+        $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
 
         if($request->ajax()){
             return datatables()->of($data)
@@ -32,6 +33,7 @@ class PenilaianController extends Controller
                     
                 }
                 $button.='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
+                // $button.='<a href="/admin/penilaian/'.$f->id.'/laporan" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
 
                 return $button;
             })
@@ -48,8 +50,11 @@ class PenilaianController extends Controller
                 }
                 return $fstatus;
             })
-            
-            ->rawColumns(['action','jumlahygdinilai','fstatus'])
+            ->addColumn('jumlahpns',function($f){
+                $jumlahpns=User2::where('kunker',$f->kunker)->count();
+                return $jumlahpns;
+            })
+            ->rawColumns(['action','jumlahygdinilai','fstatus','jumlahpns'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -124,6 +129,19 @@ class PenilaianController extends Controller
         $data->delete();
         return back()->with('sukses','Data Berhasil Dihapus');
     }
+    // public function laporan($id)
+    // {
+
+    //     $data=JawabanYangDinilai::where('id',$id)->get();
+    //     // $p=DB::select('SELECT transaksi.*,users.name,users.jk,users.no_anggota,users.nohp FROM transaksi JOIN users ON transaksi.user_id=users.id  WHERE transaksi.status="Kembali" AND transaksi.created_at BETWEEN ? AND ?',[$req->mulai,$req->akhir]);
+    //     // dd($ps);
+    //     view()->share('p', $data);
+
+    //     $pdf_doc = PDF::loadView('laporan.laporanygdinilai', compact('p'))->setPaper('a4', 'landscape');
+
+    //     return $pdf_doc->download('laporan-buku.pdf');
+    // }
+    
 
 
 }

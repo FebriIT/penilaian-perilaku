@@ -61,6 +61,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/penilaian', [PenilaianController::class,'index']);
     Route::get('/penilaian/update', [PenilaianController::class,'updatestatus'])->name('updatestatus');
     Route::get('/penilaian/{id}',[PenilaianController::class,'indexx']);
+    // Route::get('/penilaian/{id}/laporan',[PenilaianController::class,'laporan']);
     Route::get('/penilaian/{id}/hapus', [PenilaianController::class,'hapus']);
     Route::get('/penilaian/{id}/detail', [PenilaianController::class,'datapenilai']);
     Route::get('/penilaian/pertanyaan/{nippenilai}/{nipygdinilai}', [PenilaianController::class,'datapertanyaan']);
