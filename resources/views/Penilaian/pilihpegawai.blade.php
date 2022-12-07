@@ -40,7 +40,7 @@
                                 <a href="/pilihopd" class="btn btn-primary btn-sm">
                                     <span class="ti-arrow-circle-left"></span>
                                 </a>
-                                Pilih pegawai yang ingin dinilai
+                                {{ $namaopd }}
 
                             </h5>
                             

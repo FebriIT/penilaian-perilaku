@@ -47,7 +47,7 @@ class MulaiMenilaiController extends Controller
     }
     public function open($id,Request $request)
     {
-    
+        $namaopd=UnitKerja::where('kunker',$id)->first()->nunker;
         $data=User2::where('kunker','=',$id)->get();
         if($request->ajax()){
             return datatables()->of($data)
@@ -67,7 +67,7 @@ class MulaiMenilaiController extends Controller
         
         
         // dd($dataid);
-        return view('Penilaian.pilihpegawai',compact('data','ids'));
+        return view('Penilaian.pilihpegawai',compact('data','ids','namaopd'));
     }
     public function mulaimenilai($nip)
     {
