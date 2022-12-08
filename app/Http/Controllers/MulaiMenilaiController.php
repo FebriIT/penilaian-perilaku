@@ -215,8 +215,8 @@ class MulaiMenilaiController extends Controller
                     $perhitungan33->save();
                     // dd('ok');    
                 }                
-                $kunkerunitkerja=UnitKerja::find($dYgDinilai->id_unitkerja)->kunker;
-                return redirect('/pilihpegawai/'.$kunkerunitkerja)->with('berhasil','Penilaian Berhasil');
+                // $kunkerunitkerja=UnitKerja::find($dYgDinilai->id_unitkerja)->kunker;
+                return back()->with('berhasil','Penilaian Berhasil');
             }else{
                 // dd('Anda belum mengisi seluruh penilaian');
                 return redirect()->back()->with('gagal','Gagal Menilai, Terdapat form yang belum terisi, Silahkan isi kembali seluruh form');
