@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\User2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
 
 class MulaiMenilaiController extends Controller
 {
@@ -149,7 +150,7 @@ class MulaiMenilaiController extends Controller
                     $iDdYgDinilai=JawabanYangDinilai::where('nip_ygdinilai',$request->nipygdinilai)->first()->id;
                     $dYgDinilai=JawabanYangDinilai::find($iDdYgDinilai);
                     
-                    
+                    // dd($kunkerunitkerja);
                     if($request->tyDinilai==3){
                         $countjumlah=JawabanPenilai::where('tydinilai',3)->where('nip_ygdinilai',$request->nipygdinilai)->count();
                         $nilaisebelumnya=$dYgDinilai->hasil;
@@ -213,8 +214,9 @@ class MulaiMenilaiController extends Controller
                     // $perhitungan->atasan=$hasil;
                     $perhitungan33->save();
                     // dd('ok');    
-                }
-                return redirect()->back()->with('berhasil','Penilaian Berhasil');
+                }                
+                $kunkerunitkerja=UnitKerja::find($dYgDinilai->id_unitkerja)->kunker;
+                return redirect('/pilihpegawai/'.$kunkerunitkerja)->with('berhasil','Penilaian Berhasil');
             }else{
                 // dd('Anda belum mengisi seluruh penilaian');
                 return redirect()->back()->with('gagal','Gagal Menilai, Terdapat form yang belum terisi, Silahkan isi kembali seluruh form');
@@ -227,3 +229,4 @@ class MulaiMenilaiController extends Controller
         }
     }
 }
+

@@ -52,9 +52,13 @@
                                                 1. Masukan NIP anda untuk mulai menilai {{ $data->nama }} <br>
                                                 2. Setalah mengisi NIP Pilih tombol "Cari NIP" <br>
                                                 3. Apabila data anda muncul akan ada tampilan penggisian form <br>
-                                                3. Pilih Tingkat yang dinilai <br>
-                                                4. Jika semua data sudah terisi semua pilih tombol simpan <br>
-                                                
+                                                4. Pilih Tingkat yang dinilai <br>
+                                                5. Jika semua data sudah terisi semua pilih tombol simpan <br>
+
+                                                <b> Nb : <br>
+                                                    1. Pastikan penilaian anda sudah benar sebelum menglik tombol simpan
+                                                    2. Untuk mengecek apakah anda sudah menilai atau belum silahkan masukan kembali NIP dan klik cari NIP, jika pesan "Anda sudah meniai data ini" berarti anda sudah menilai "{{ $data->nama }}"<br>
+                                                </b>
                                             </p>
                                           </td>
                                         </tr>
@@ -304,3 +308,4 @@
 
     </body>
 </html>
+
