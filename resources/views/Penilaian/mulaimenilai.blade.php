@@ -56,8 +56,8 @@
                                                 5. Jika semua data sudah terisi semua pilih tombol simpan <br>
 
                                                 <b> Nb : <br>
-                                                    1. Pastikan penilaian anda sudah benar sebelum menglik tombol simpan
-                                                    2. Untuk mengecek apakah anda sudah menilai atau belum silahkan masukan kembali NIP dan klik cari NIP, jika pesan "Anda sudah meniai data ini" berarti anda sudah menilai "{{ $data->nama }}"<br>
+                                                    1. Pastikan penilaian anda sudah benar sebelum menglik tombol simpan <br>
+                                                    2. Untuk mengecek apakah anda sudah menilai atau belum silahkan masukan kembali NIP dan klik cari NIP, jika pesan "Anda sudah menilai data ini" berarti anda sudah menilai "{{ $data->nama }}"
                                                 </b>
                                             </p>
                                           </td>
