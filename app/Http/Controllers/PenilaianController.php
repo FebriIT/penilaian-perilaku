@@ -9,7 +9,7 @@ use App\Models\Pertanyaan;
 use App\Models\UnitKerja;
 use App\Models\User;
 use App\Models\User2;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use Illuminate\Http\Request;
 use PhpOption\None;
 
@@ -18,23 +18,36 @@ class PenilaianController extends Controller
     public function index(Request $request)
     {
 
-        $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
+        if(auth()->user()->role=='admin'){
+
+            $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->orderBy('nunker','asc')->get();
+        }elseif(auth()->user()->role=='user'){
+            $data=UnitKerja::where('aktif',"=",1)->where('typeunker','!=','')->where('nunker','!=','')->where('fstatus',1)->orderBy('nunker','asc')->get();
+
+
+        }
 
         if($request->ajax()){
             return datatables()->of($data)
             ->addColumn('action',function($f){
-                
-                if($f->fstatus==1){
-                    $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btndanger tabledit-edit-button btn btn-sm btn-danger" style="float: none; margin: 5px;"><span class="ti-close"></span></a>';
+                if(auth()->user()->role=='admin'){
+                    if($f->fstatus==1){
+                        $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btndanger tabledit-edit-button btn btn-sm btn-danger" style="float: none; margin: 5px;"><span class="ti-close"></span></a>';
+                        
+                        
+                    }else if($f->fstatus==0){
+                        $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btnsuccess tabledit-edit-button btn btn-sm btn-success" style="float: none; margin: 5px;"><span class="ti-check"></span></a>';
+                        
+                    }
+                    $button.='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
+                    $button.='<a href="/admin/penilaian/'.$f->id.'/laporan" class="tabledit-edit-button btn btn-sm btn-warning" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
+    
+                }elseif(auth()->user()->role=='user'){
                     
-                    
-                }else if($f->fstatus==0){
-                    $button='<a href="javascript:void(0)" id="updatestatus" data-id="'.$f->id.'" class="btnsuccess tabledit-edit-button btn btn-sm btn-success" style="float: none; margin: 5px;"><span class="ti-check"></span></a>';
-                    
+                    $button='<a href="/user/penilaian/'.$f->id.'/laporan" class="tabledit-edit-button btn btn-sm btn-warning" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
+    
                 }
-                $button.='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
-                // $button.='<a href="/admin/penilaian/'.$f->id.'/laporan" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
-
+                
                 return $button;
             })
             ->addColumn('jumlahygdinilai',function($f){
@@ -129,18 +142,28 @@ class PenilaianController extends Controller
         $data->delete();
         return back()->with('sukses','Data Berhasil Dihapus');
     }
-    // public function laporan($id)
-    // {
+    public function laporan($id)
+    {
+        // dd($id);
+        $data=JawabanYangDinilai::where('id_unitkerja',$id)->get();
+        $unker=UnitKerja::find($id);
+        $pegawai=User2::where('kunker',$unker->kunker)->get();
+        // // $p=DB::select('SELECT transaksi.*,users.name,users.jk,users.no_anggota,users.nohp FROM transaksi JOIN users ON transaksi.user_id=users.id  WHERE transaksi.status="Kembali" AND transaksi.created_at BETWEEN ? AND ?',[$req->mulai,$req->akhir]);
+        // // dd($ps);
+        view()->share('p', $data);
 
-    //     $data=JawabanYangDinilai::where('id',$id)->get();
-    //     // $p=DB::select('SELECT transaksi.*,users.name,users.jk,users.no_anggota,users.nohp FROM transaksi JOIN users ON transaksi.user_id=users.id  WHERE transaksi.status="Kembali" AND transaksi.created_at BETWEEN ? AND ?',[$req->mulai,$req->akhir]);
-    //     // dd($ps);
-    //     view()->share('p', $data);
+        if(auth()->user()->role=='admin'){
 
-    //     $pdf_doc = PDF::loadView('laporan.laporanygdinilai', compact('p'))->setPaper('a4', 'landscape');
+            $pdf_doc =PDF::loadView('laporan.ygdinilai', compact('data','pegawai','unker'))->setPaper('a4', 'landscape');
+        }elseif(auth()->user()->role=='user'){
+            $pdf_doc =PDF::loadView('laporan.ygdinilaiuser', compact('data','pegawai','unker'))->setPaper('a4', 'landscape');
 
-    //     return $pdf_doc->download('laporan-buku.pdf');
-    // }
+        }
+
+        return $pdf_doc->download($unker->nunker.'- Penilaian Perilaku.pdf');
+        // $pdf = PDF::loadview('laporan.ygdinilai',['data'=>$data]);
+    	// return $pdf->download('laporan-pegawai-pdf');
+    }
     
 
 

@@ -54,8 +54,8 @@
                                             <th>No</th> 
                                             <th>Unit Kerja</th>
                                             <th>Jumlah yang dinilai</th>
-                                            <th>Status</th>
                                             <th>Jumlah PNS</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -121,7 +121,13 @@
             processing: true,
             serverSide: true,
             deferRender: true,
+            @if(auth()->user()->role=='admin')
+                
             ajax: "{{ url('/admin/penilaian') }}",
+            @elseif(auth()->user()->role=='user')
+            ajax: "{{ url('/user/penilaian') }}",
+
+            @endif
             columns: [
 
                 {
@@ -141,13 +147,14 @@
                     name: 'jumlahygdinilai'
                 },
                 {
-                    data: 'fstatus',
-                    name: 'fstatus'
-                },
-                {
                     data: 'jumlahpns',
                     name: 'jumlahpns'
                 },
+                {
+                    data: 'fstatus',
+                    name: 'fstatus'
+                },
+                
                 {
                     data: 'action',
                     name: 'action'

@@ -49,19 +49,21 @@
                     <span> Pertanyaan </span>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="/{{ auth()->user()->role }}/penilaian" class="waves-effect">
                     <i class="mdi mdi-domain"></i>
                     <span> Penilaian </span>
                 </a>
             </li>
-            @endif
+            @if(auth()->user()->role=='admin')
             <li>
                 <a href="/admin/pengaturan" class="waves-effect">
                     <i class="mdi mdi-settings"></i>
                     <span> Pengaturan </span>
                 </a>
             </li>
+            @endif
 
 
 
