@@ -96,6 +96,12 @@
                                             </select>
                                         </div>
                                     </div>
+                                    @php
+                                        $opd=App\Models\UnitKerja::where('kunker',$data->kunker)->first()->kunker;
+                                    @endphp
+                                    <input class="form-control" type="text"  id="unitkerja" name="unitkerja" value="{{ $opd }}" hidden>
+                                    <input class="form-control" type="text"  id="namaygdinilai" name="namaygdinilai" value="{{ $data->nama }}" hidden>
+                                    
                                    
                                 </div>
                                 <div class="col-12">

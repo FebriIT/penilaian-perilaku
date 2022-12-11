@@ -159,8 +159,9 @@ class MulaiMenilaiController extends Controller
                 if (JawabanYangDinilai::where('nip_ygdinilai',$request->nipygdinilai)->exists()) {
                     
                     $iDdYgDinilai=JawabanYangDinilai::where('nip_ygdinilai',$request->nipygdinilai)->first()->id;
+                    // dd($iDdYgDinilai);
                     $dYgDinilai=JawabanYangDinilai::find($iDdYgDinilai);
-                    
+                    // dd($dYgDinilai->hasil);
                     // dd($kunkerunitkerja);
                     if($request->tyDinilai==3){
                         $countjumlah=JawabanPenilai::where('tydinilai',3)->where('nip_ygdinilai',$request->nipygdinilai)->count();
@@ -171,7 +172,6 @@ class MulaiMenilaiController extends Controller
                             'hasil'=>$hasilakhir,
                             'atasan'=>$countjumlah
                         ]);
-                        // dd($hasilakhir);
     
                     }else if($request->tyDinilai==2){
                         $countjumlah1=JawabanPenilai::where('tydinilai',2)->where('nip_ygdinilai',$request->nipygdinilai)->count();
@@ -195,6 +195,8 @@ class MulaiMenilaiController extends Controller
                             'hasil'=>$hasilakhir2,
                             'bawahan'=>$countjumlah2
                         ]);
+                    }else{
+                        dd('errorrrrr');
                     }
                     
     
@@ -226,9 +228,10 @@ class MulaiMenilaiController extends Controller
                     $perhitungan33->save();
                     // dd('ok');    
                 }                
-                $kunkerunitkerja=UnitKerja::find($dYgDinilai->id_unitkerja)->kunker;
+                // dd($dYgDinilai);
+                // $kunkerunitkerja=UnitKerja::find($dYgDinilai->id_unitkerja)->kunker;
                 
-                return redirect('/pilihpegawai/'.$kunkerunitkerja)->with('berhasil','Penilaian Berhasil');
+                return redirect('/pilihpegawai/'.$request->unitkerja)->with('berhasil','Penilaian "'.$request->namaygdinilai.'" Berhasil');
             }else{
                 // dd('Anda belum mengisi seluruh penilaian');
                 return redirect()->back()->with('gagal','Gagal Menilai, Terdapat form yang belum terisi, Silahkan isi kembali seluruh form');
