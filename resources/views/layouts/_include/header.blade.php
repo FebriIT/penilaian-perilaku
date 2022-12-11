@@ -103,9 +103,10 @@
                     <div class="dropdown-item noti-title">
                         <h5>{{ auth()->user()->name }}</h5>
                     </div>
+                    @if(auth()->user()->role=='admin')
                     <a class="dropdown-item" href="/admin/profile"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>
                         Profile</a>
-
+                        @endif
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{route('logout')}}"><i class="mdi mdi-logout m-r-5 text-muted"></i>
                         Logout</a>

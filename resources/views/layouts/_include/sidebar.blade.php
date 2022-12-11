@@ -13,12 +13,7 @@
         <ul>
             {{-- <li class="menu-title">{{ auth()->user()->username }}</li> --}}
 
-            <li>
-                <a href="/{{ auth()->user()->role }}/dashboard" class="waves-effect">
-                    <i class="mdi mdi-home"></i>
-                    <span> Dashboard </span>
-                </a>
-            </li>
+            
 
             {{-- <li class="has_sub">
                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span>
@@ -31,6 +26,12 @@
             
             
             @if (auth()->user()->role=='admin')
+            <li>
+                <a href="/{{ auth()->user()->role }}/dashboard" class="waves-effect">
+                    <i class="mdi mdi-home"></i>
+                    <span> Dashboard </span>
+                </a>
+            </li>
             <li>
                 <a href="/{{auth()->user()->role}}/datauser" class="waves-effect">
                     <i class="mdi mdi-folder-multiple-outline"></i>
