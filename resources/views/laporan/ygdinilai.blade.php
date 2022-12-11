@@ -55,9 +55,10 @@
                                 <td>
                                     @foreach ($namapenilai as $key=>$row1)
                                         @php
-                                            $dNama=App\Models\User2::where('nipbaru',$row1->nip_penilai)->first()->nama;
+                                            $dNama=App\Models\User2::where('nipbaru',$row1->nip_penilai)->first();
                                         @endphp
-                                    {{ ++$key }}. {{ $dNama }} <br>
+                                        {{ ++$key }}. @if($dNama->gldepan!=null){{ $dNama->gldepan }}. @endif{{ $dNama->nama }}@if($dNama->glblk!=null), {{ $dNama->glblk }} @endif <br>
+
                                     @endforeach
                                 </td>
                                 <td>{{ $fnilai }}</td>
