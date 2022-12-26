@@ -56,10 +56,13 @@
                                             NIP yang Dinilai = {{ $user->nipbaru }} <br>
                                             Jumlah Pertanyaan = {{ $jumlahpertanyaan }} <br>
                                             Total Skor = {{ $jwbygdinilai }} <br>
+                                            @if($jumlahpenilai!=0)
                                             Hasil Skor= {{ $fnilai=number_format($jwbygdinilai/$jumlahpenilai,0) }} <br>
+                                            @endif
                                             Max Skor = {{ $jumlahpertanyaan*3 }} <br>
+                                            @if($jumlahpenilai!=0)
                                             Keterangan = @if($fnilai<=25)<b style="color:red">Kurang Dari Ekspetasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspetasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Melebihi Ekspetasi </b> @else Data Tidak Ditemukan @endif 
-                                            
+                                            @endif
                                         </p>
                                       </td>
                                     </tr>
@@ -99,7 +102,11 @@
 
                                             @endif
                                             <td>{{ $row->hasil }}</td>
-                                            <td><a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a></td>
+                                            <td>
+                                                <a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>
+                                                <a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}/delete" class="tabledit-edit-button btn btn-sm btn-danger" style="float: none; margin: 5px;"><span class="ti-trash"></span></a>
+                                            </td>
+                                            
                                         </tr>
                                         @endforeach
                                     </tbody>

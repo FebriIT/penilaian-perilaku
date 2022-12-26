@@ -131,6 +131,34 @@ class PenilaianController extends Controller
         $jumlahpertanyaan=Pertanyaan::all()->count();
         return view('Penilaian.datapertanyaan',compact('data','nipenilai1','nipygdinilai1','jawaban','jumlahpertanyaan'));
     }
+    public function datapertanyaandelete($nippenilai,$nipygdinilai)
+    {
+        $nipenilai1=decrypt($nippenilai) ;
+        $nipygdinilai1=decrypt($nipygdinilai) ;
+        $jpenilai=JawabanPenilai::where('nip_penilai',$nipenilai1)->where('nip_ygdinilai',$nipygdinilai1);
+        $sjpertanyaan=JawabanPertanyaan::where('nip_penilai',$nipenilai1)->where('nip_ygdinilai',$nipygdinilai1);
+        $sjygdinilai=JawabanYangDinilai::where('nip_ygdinilai',$nipygdinilai1);
+        $hasil=$sjygdinilai->first()->hasil-$sjpertanyaan->sum('jawaban');
+        $jpenilai=JawabanPenilai::where('nip_penilai',$nipenilai1)->where('nip_ygdinilai',$nipygdinilai1);
+        
+        // dd($jpenilai->count());
+        $sjpertanyaan->delete();
+        $jpenilai->delete();
+        
+        $cbawahan=JawabanPenilai::where('nip_ygdinilai',$nipygdinilai1)->where('tydinilai','1')->count();
+        $csejawat=JawabanPenilai::where('nip_ygdinilai',$nipygdinilai1)->where('tydinilai','2')->count();
+        $catasan=JawabanPenilai::where('nip_ygdinilai',$nipygdinilai1)->where('tydinilai','3')->count();
+        // dd($catasan);
+        $sjygdinilai->update([
+            'hasil'=>$hasil,
+            'atasan'=>$catasan,
+            'sejawat'=>$csejawat,
+            'bawahan'=>$cbawahan,
+
+        ]);
+
+        return back()->with('pesan','Data Berhasil Dihapus');
+    }
     public function hapus($did)
     {
         $id=decrypt($did);

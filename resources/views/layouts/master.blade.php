@@ -52,7 +52,7 @@
 
     <!-- Begin page -->
     <div id="wrapper">
-
+        
         <!-- ========== Left Sidebar Start ========== -->
         <div class="left side-menu">
             <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
@@ -77,7 +77,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2022 IT PKAP-BKPSDMD KOTA JAMBI | Bug Report 085266911477.
+                © 2022 UNIVERSITAS DINAMIKA BANGSA JAMBI.
             </footer>
 
         </div>
