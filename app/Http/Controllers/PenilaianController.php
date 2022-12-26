@@ -189,8 +189,6 @@ class PenilaianController extends Controller
         }
 
         return $pdf_doc->download($unker->nunker.'- Penilaian Perilaku.pdf');
-        // $pdf = PDF::loadview('laporan.ygdinilai',['data'=>$data]);
-    	// return $pdf->download('laporan-pegawai-pdf');
     }
     
 

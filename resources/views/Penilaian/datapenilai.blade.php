@@ -104,7 +104,7 @@
                                             <td>{{ $row->hasil }}</td>
                                             <td>
                                                 <a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>
-                                                <a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}/delete" class="tabledit-edit-button btn btn-sm btn-danger" style="float: none; margin: 5px;"><span class="ti-trash"></span></a>
+                                                <a href="/admin/penilaian/pertanyaan/{{ encrypt($row->nip_penilai)  }}/{{ encrypt($row->nip_ygdinilai) }}/delete" class="tabledit-edit-button btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" style="float: none; margin: 5px;"><span class="ti-trash"></span></a>
                                             </td>
                                             
                                         </tr>
