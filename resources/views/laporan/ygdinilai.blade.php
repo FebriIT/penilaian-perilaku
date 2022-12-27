@@ -24,8 +24,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama yang Dinilai</th>
-                        <th>Nama Penilai</th>
-                        <th>Skor</th>
+                        {{--  <th>Nama Penilai</th>
+                        <th>Skor</th>  --}}
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -52,7 +52,7 @@
 
                                 <td colspan="3" bgcolor="red">Belum ada penilaian</td>
                             @else
-                                <td>
+                                {{--  <td>
                                     @foreach ($namapenilai as $key=>$row1)
                                         @php
                                             $dNama=App\Models\User2::where('nipbaru',$row1->nip_penilai)->first();
@@ -60,10 +60,10 @@
                                         {{ ++$key }}. @if($dNama->gldepan!=null){{ $dNama->gldepan }}. @endif{{ $dNama->nama }}@if($dNama->glblk!=null), {{ $dNama->glblk }} @endif <br>
 
                                     @endforeach
-                                </td>
-                                <td>{{ $fnilai }}</td>
+                                </td>  --}}
+                                {{--  <td>{{ $fnilai }}</td>  --}}
                                 <td>@if($fnilai<=25)<b style="color:red">Kurang Dari Ekspetasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspetasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Melebihi Ekspetasi </b> @else Data Tidak Ditemukan @endif </td>
-                                @endif
+                             @endif
                            
                         </tr>
                     @endforeach
