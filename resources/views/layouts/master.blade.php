@@ -77,7 +77,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2022 UNIVERSITAS DINAMIKA BANGSA JAMBI.
+                © 2022 IT PKAP-BKPSDMD KOTA JAMBI | Bug Report indexnull1@gmail.com.
             </footer>
 
         </div>
