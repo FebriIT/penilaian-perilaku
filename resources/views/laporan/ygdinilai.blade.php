@@ -50,7 +50,7 @@
                                 @endphp
                             @if($countpenilai==0)
 
-                                <td>Belum ada penilaian</td>
+                                <td>Belum Ada Penilaian</td>
                             @else
                                 {{--  <td>
                                     @foreach ($namapenilai as $key=>$row1)
@@ -62,7 +62,7 @@
                                     @endforeach
                                 </td>  --}}
                                 {{--  <>{{ $fnilai }}</ td>  --}}
-                                <td>@if($fnilai<=25)<b style="color:red">Kurang Dari Ekspetasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspetasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Melebihi Ekspetasi </b> @else Data Tidak Ditemukan @endif </td>
+                                <td>@if($fnilai<=25)<b style="color:red">Kurang Dari Ekspektasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspektasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Di Atas Ekspektasi </b> @else Data Tidak Ditemukan @endif </td>
                              @endif
                            
                         </tr>
