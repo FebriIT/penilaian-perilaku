@@ -41,6 +41,7 @@ class PenilaianController extends Controller
                     }
                     $button.='<a href="/admin/penilaian/'.$f->id.'" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-receipt"></span></a>';
                     $button.='<a href="/admin/penilaian/'.$f->id.'/laporan" class="tabledit-edit-button btn btn-sm btn-warning" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
+                    $button.='<a href="/admin/penilaian/'.$f->id.'/laporanstatus" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none; margin: 5px;"><span class="ti-download"></span></a>';
     
                 }elseif(auth()->user()->role=='user'){
                     
@@ -186,6 +187,23 @@ class PenilaianController extends Controller
         }elseif(auth()->user()->role=='user'){
             $pdf_doc =PDF::loadView('laporan.ygdinilaiuser', compact('data','pegawai','unker'))->setPaper('a4', 'landscape');
 
+        }
+
+        return $pdf_doc->download($unker->nunker.'- Penilaian Perilaku.pdf');
+    }
+    public function laporanstatus($id)
+    {
+        // dd($id);
+        $data=JawabanYangDinilai::where('id_unitkerja',$id)->get();
+        $unker=UnitKerja::find($id);
+        $pegawai=User2::where('kunker',$unker->kunker)->get();
+        // // $p=DB::select('SELECT transaksi.*,users.name,users.jk,users.no_anggota,users.nohp FROM transaksi JOIN users ON transaksi.user_id=users.id  WHERE transaksi.status="Kembali" AND transaksi.created_at BETWEEN ? AND ?',[$req->mulai,$req->akhir]);
+        // // dd($ps);
+        view()->share('p', $data);
+
+        if(auth()->user()->role=='admin'){
+
+            $pdf_doc =PDF::loadView('laporan.ygdinilaittd', compact('data','pegawai','unker'))->setPaper('a4', 'landscape');
         }
 
         return $pdf_doc->download($unker->nunker.'- Penilaian Perilaku.pdf');

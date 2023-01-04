@@ -24,8 +24,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama yang Dinilai</th>
-                        <th>Nama Penilai</th>
-                        <th>Skor</th>
+                        {{--  <th>Nama Penilai</th>
+                        <th>Skor</th>  --}}
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -50,9 +50,9 @@
                                 @endphp
                             @if($countpenilai==0)
 
-                                <td colspan="3">Belum Ada Penilaian</td>
+                                <td>Belum Ada Penilaian</td>
                             @else
-                                <td>
+                                {{--  <td>
                                     @foreach ($namapenilai as $key=>$row1)
                                         @php
                                             $dNama=App\Models\User2::where('nipbaru',$row1->nip_penilai)->first();
@@ -60,8 +60,8 @@
                                         {{ ++$key }}. @if($dNama->gldepan!=null){{ $dNama->gldepan }}. @endif{{ $dNama->nama }}@if($dNama->glblk!=null), {{ $dNama->glblk }} @endif <br>
 
                                     @endforeach
-                                </td> 
-                                <td>{{ $fnilai }}</ td>
+                                </td>  --}}
+                                {{--  <>{{ $fnilai }}</ td>  --}}
                                 <td>@if($fnilai<=25)<b style="color:red">Kurang Dari Ekspektasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspektasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Di Atas Ekspektasi </b> @else Data Tidak Ditemukan @endif </td>
                              @endif
                            
@@ -71,7 +71,25 @@
                 </tbody>
             </table>
             <br>
-            
+            <table style="width: 100%;border-style: none;">
+                <tr>
+                    <td style="color: white;width:70%;">
+                        Mengetahui, <br>
+                    
+                    </td>
+                    <td >
+                        Jambi,&nbsp;&nbsp; &nbsp; Januari 2023 <br><br>
+                    KEPALA BKPSDMD KOTA JAMBI <br>
+                    <br><br><br><br>
+                    LIANA ANDRIANI, S.T.P, ME <br>
+                    NIP. 19701004 199803 2 005
+                    </td>
+                </tr>
+                {{-- <tr>
+                    <td>Baris 2 kolom 1</td>
+                    <td>baris 2 kolom 2</td>
+                </tr> --}}
+            </table>
         </div>
     </div>
 
