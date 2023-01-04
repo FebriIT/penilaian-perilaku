@@ -202,8 +202,7 @@ class PenilaianController extends Controller
         view()->share('p', $data);
 
         if(auth()->user()->role=='admin'){
-            $customPaper = array(0,0,935.00,935.80);
-            $pdf_doc =PDF::loadView('laporan.ygdinilaittd', compact('data','pegawai','unker'))->setPaper($customPaper, 'portrait');
+            $pdf_doc =PDF::loadView('laporan.ygdinilaittd', compact('data','pegawai','unker'))->setPaper('a4', 'portrait');
         }
 
         return $pdf_doc->download($unker->nunker.'- Penilaian Perilaku.pdf');
