@@ -68,7 +68,15 @@ class PenilaianController extends Controller
                 $jumlahpns=User2::where('kunker',$f->kunker)->count();
                 return $jumlahpns;
             })
-            ->rawColumns(['action','jumlahygdinilai','fstatus','jumlahpns'])
+            ->addColumn('nilai',function($f){
+                
+                $nilai=200;
+
+                
+               
+                return $nilai;
+            })
+            ->rawColumns(['action','jumlahygdinilai','fstatus','jumlahpns','nilai'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -105,7 +113,13 @@ class PenilaianController extends Controller
     public function indexx($id)
     {
         $data=JawabanYangDinilai::where('id_unitkerja',$id)->get();
-        return view('Penilaian.openadmin',compact('data'));
+        $nilai=JawabanYangDinilai::where('id_unitkerja',$id)->sum('hasil');
+        $jumlahpenilai=JawabanPenilai::where('id_unitkerja',$id)->count();
+        $hasil=number_format($nilai/$jumlahpenilai);
+        $jumlahpertanyaan=Pertanyaan::all()->count();
+        
+        $jumlahjwbygdinilai=JawabanYangDinilai::where('id_unitkerja',$id)->count();
+        return view('Penilaian.openadmin',compact('data','jumlahjwbygdinilai','nilai','jumlahpenilai','jumlahpertanyaan','hasil'));
     }
     public function datapenilai($dnip)
     {

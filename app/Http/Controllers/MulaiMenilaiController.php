@@ -49,7 +49,7 @@ class MulaiMenilaiController extends Controller
     public function open($id,Request $request)
     {
         $namaopd=UnitKerja::where('kunker',$id)->first()->nunker;
-        $data=User2::where('kunker','=',$id)->get();
+        $data=User2::where('kunker',$id)->get();
         if($request->ajax()){
             return datatables()->of($data)
             ->addColumn('action',function($f){

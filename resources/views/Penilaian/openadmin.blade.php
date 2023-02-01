@@ -49,6 +49,40 @@
                             Data pegawai yang sudah dinilai 
                            
                         </h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered table-striped">
+                                    <tr>
+                                      <td>
+                                        <p style="font-size: 13px;text-align: justify;vertical-align: middle;">
+                                            {{--  NIP yang Dinilai = -<br>  --}}
+                                            Jumlah Pertanyaan = {{ $jumlahpertanyaan }} <br>
+                                            Total Skor = {{ $nilai }} <br>
+                                            jumlah penilai = {{ $jumlahpenilai }} <br>
+                                            @if($jumlahpenilai!=0)
+                                            Hasil Skor= {{ $hasil }} <br>
+                                            @endif
+                                            Max Skor = {{ $jumlahpertanyaan*3 }} <br>
+                                            @if($jumlahpenilai!=0)
+                                            Keterangan = @if($hasil<=25)<b style="color:red">Kurang Dari Ekspetasi</b>  @elseif($hasil<=49) <b style="color:green">Sesuai Ekspetasi </b> @elseif ($hasil<=63) <b style="color:blue;">  Melebihi Ekspetasi </b> @else Data Tidak Ditemukan @endif 
+                                            @endif
+
+
+                                            {{--  Max Skor = {{ $nilai }}<br>  --}}
+                                            {{--  Jumlah Penilai = {{ $jumlahpenilai }}<br>
+                                            Hasil Penilaian = {{ $nilai/21 }}<br>
+                                            @php
+                                                $fnilai=50;
+                                            @endphp
+                                            Keterangan = @if($fnilai<=25)<b style="color:red">Kurang Dari Ekspetasi</b>  @elseif($fnilai<=49) <b style="color:green">Sesuai Ekspetasi </b> @elseif ($fnilai<=63) <b style="color:blue;">  Melebihi Ekspetasi </b> @else Data Tidak Ditemukan @endif   --}}
+                                            
+                                        </p>
+                                      </td>
+                                    </tr>
+                                   
+                                  </table>
+                            </div>
+                        </div>
                         <div class="table-rep-plugin">
                             <div class="table-responsive b-0" data-pattern="priority-columns">
                                 <table id="datatable1" class="table table-striped table-bordered table-sm text-center"
