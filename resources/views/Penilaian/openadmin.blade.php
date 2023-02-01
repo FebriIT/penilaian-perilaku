@@ -58,7 +58,7 @@
                                             {{--  NIP yang Dinilai = -<br>  --}}
                                             Jumlah Pertanyaan = {{ $jumlahpertanyaan }} <br>
                                             Total Skor = {{ $nilai }} <br>
-                                            jumlah penilai = {{ $jumlahpenilai }} <br>
+                                            jumlah penilai = {{ $jumlahpenilaifix }} <br>
                                             @if($jumlahpenilai!=0)
                                             Hasil Skor= {{ $hasil }} <br>
                                             @endif

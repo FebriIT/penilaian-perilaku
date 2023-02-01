@@ -115,11 +115,16 @@ class PenilaianController extends Controller
         $data=JawabanYangDinilai::where('id_unitkerja',$id)->get();
         $nilai=JawabanYangDinilai::where('id_unitkerja',$id)->sum('hasil');
         $jumlahpenilai=JawabanPenilai::where('id_unitkerja',$id)->count();
-        $hasil=number_format($nilai/$jumlahpenilai);
+        $jatasan=JawabanYangDinilai::where('id_unitkerja',$id)->sum('atasan');
+        $jsejawat=JawabanYangDinilai::where('id_unitkerja',$id)->sum('sejawat');
+        $jbawahan=JawabanYangDinilai::where('id_unitkerja',$id)->sum('bawahan');
+        $jumlahpenilaifix=$jatasan+$jsejawat+$jbawahan;
+        // dd($jumlahpenilai)
+        $hasil=number_format($nilai/$jumlahpenilaifix);
         $jumlahpertanyaan=Pertanyaan::all()->count();
         
         $jumlahjwbygdinilai=JawabanYangDinilai::where('id_unitkerja',$id)->count();
-        return view('Penilaian.openadmin',compact('data','jumlahjwbygdinilai','nilai','jumlahpenilai','jumlahpertanyaan','hasil'));
+        return view('Penilaian.openadmin',compact('data','jumlahpenilaifix','jumlahjwbygdinilai','nilai','jumlahpenilai','jumlahpertanyaan','hasil'));
     }
     public function datapenilai($dnip)
     {
